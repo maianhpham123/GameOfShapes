@@ -6,23 +6,17 @@
 //
 
 #include "entity.hpp"
+#include "math.hpp"
 
-Entity::Entity(float X, float Y, SDL_Texture* Texture) : x(X), y(Y), texture(Texture) {
+Entity::Entity(Vector2D Pos, SDL_Texture* Texture) : pos(Pos), texture(Texture) {
     frame.x = 0;
     frame.y = 0;
-    frame.w = 64;
-    frame.h = 64;
 }
 
-float Entity::getX() {
-    return x;
-}
-
-float Entity::getY() {
-    return y;
-}
 
 SDL_Texture* Entity::getTex() {
+    if (texture == NULL)
+        cout << "getTex is not performed!" << endl;
     return texture;
 }
 

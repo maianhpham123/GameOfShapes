@@ -17,8 +17,9 @@ int main(int argc, char* argv[])
         logErrorAndExit("InitialiseImage", IMG_GetError());
     
     RenderWindow window;
+    
     SDL_Texture* player = window.loadTexture("yellow_circle.png");
-    Entity platform(100, 100, player);
+    Entity platform(Vector2D(100, 100), player);
     
     bool isRunning = true;
     SDL_Event event;

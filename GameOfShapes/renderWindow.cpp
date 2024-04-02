@@ -35,12 +35,12 @@ void RenderWindow::render(Entity& entity) {
     srcRect.w = entity.getFrame().w;
     srcRect.h = entity.getFrame().h;
     
-    dstRect.x = entity.getX();
-    dstRect.y = entity.getY();
+    dstRect.x = entity.getPos().x;
+    dstRect.y = entity.getPos().y;
     dstRect.w = 64;
     dstRect.h = 64;
     
-    SDL_RenderCopy(renderer, entity.getTex(), &srcRect, &dstRect);
+    SDL_RenderCopy(renderer, entity.getTex(), NULL, &dstRect);
 }
 
 void RenderWindow::clear() {
