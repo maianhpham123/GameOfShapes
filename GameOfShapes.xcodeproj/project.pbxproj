@@ -7,21 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04530DD02BBBCD3400CF006C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04530DCF2BBBCD3400CF006C /* AppDelegate.m */; };
 		04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD12BBBCD3500CF006C /* Assets.xcassets */; };
-		04530DD52BBBCD3500CF006C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD32BBBCD3500CF006C /* MainMenu.xib */; };
-		04530DD82BBBCD3500CF006C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04530DD72BBBCD3500CF006C /* main.m */; };
+		04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE42BBBCEAC00CF006C /* SDL2_image.framework */; };
+		04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */; };
+		04530DE92BBBCEB000CF006C /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE82BBBCEB000CF006C /* SDL2_net.framework */; };
+		04530DEB2BBBCEB200CF006C /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DEA2BBBCEB200CF006C /* SDL2_ttf.framework */; };
+		04530DED2BBBCEB400CF006C /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DEC2BBBCEB400CF006C /* SDL2.framework */; };
+		04530DF02BBBCF2100CF006C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04530DEF2BBBCF2100CF006C /* main.cpp */; };
+		04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 04530DFC2BBBD6F800CF006C /* yellow_circle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		04530DCB2BBBCD3400CF006C /* GameOfShapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfShapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04530DCE2BBBCD3400CF006C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		04530DCF2BBBCD3400CF006C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		04530DD12BBBCD3500CF006C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04530DD42BBBCD3500CF006C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		04530DD62BBBCD3500CF006C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04530DD72BBBCD3500CF006C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04530DD92BBBCD3500CF006C /* GameOfShapes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GameOfShapes.entitlements; sourceTree = "<group>"; };
+		04530DE42BBBCEAC00CF006C /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		04530DE82BBBCEB000CF006C /* SDL2_net.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_net.framework; path = ../../../../../../../../Library/Frameworks/SDL2_net.framework; sourceTree = "<group>"; };
+		04530DEA2BBBCEB200CF006C /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		04530DEC2BBBCEB400CF006C /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		04530DEF2BBBCF2100CF006C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		04530DF42BBBCF5A00CF006C /* defs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
+		04530DF52BBBCFF600CF006C /* renderWindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = renderWindow.cpp; sourceTree = "<group>"; };
+		04530DF62BBBCFF600CF006C /* renderWindow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = renderWindow.hpp; sourceTree = "<group>"; };
+		04530DFC2BBBD6F800CF006C /* yellow_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow_circle.png; path = ../../../../../../../../Volumes/Data/game/yellow_circle.png; sourceTree = "<group>"; };
+		04530DFF2BBBDA2400CF006C /* entity.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entity.cpp; sourceTree = "<group>"; };
+		04530E002BBBDA2400CF006C /* entity.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = entity.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +41,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04530DED2BBBCEB400CF006C /* SDL2.framework in Frameworks */,
+				04530DEB2BBBCEB200CF006C /* SDL2_ttf.framework in Frameworks */,
+				04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */,
+				04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */,
+				04530DE92BBBCEB000CF006C /* SDL2_net.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +57,8 @@
 			children = (
 				04530DCD2BBBCD3400CF006C /* GameOfShapes */,
 				04530DCC2BBBCD3400CF006C /* Products */,
+				04530DFC2BBBD6F800CF006C /* yellow_circle.png */,
+				04530DE32BBBCEAC00CF006C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,15 +73,45 @@
 		04530DCD2BBBCD3400CF006C /* GameOfShapes */ = {
 			isa = PBXGroup;
 			children = (
-				04530DCE2BBBCD3400CF006C /* AppDelegate.h */,
-				04530DCF2BBBCD3400CF006C /* AppDelegate.m */,
+				04530DF22BBBCF2F00CF006C /* include */,
+				04530DEE2BBBCF1200CF006C /* src */,
 				04530DD12BBBCD3500CF006C /* Assets.xcassets */,
-				04530DD32BBBCD3500CF006C /* MainMenu.xib */,
 				04530DD62BBBCD3500CF006C /* Info.plist */,
-				04530DD72BBBCD3500CF006C /* main.m */,
 				04530DD92BBBCD3500CF006C /* GameOfShapes.entitlements */,
 			);
 			path = GameOfShapes;
+			sourceTree = "<group>";
+		};
+		04530DE32BBBCEAC00CF006C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04530DEC2BBBCEB400CF006C /* SDL2.framework */,
+				04530DEA2BBBCEB200CF006C /* SDL2_ttf.framework */,
+				04530DE82BBBCEB000CF006C /* SDL2_net.framework */,
+				04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */,
+				04530DE42BBBCEAC00CF006C /* SDL2_image.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		04530DEE2BBBCF1200CF006C /* src */ = {
+			isa = PBXGroup;
+			children = (
+				04530DEF2BBBCF2100CF006C /* main.cpp */,
+				04530DF52BBBCFF600CF006C /* renderWindow.cpp */,
+				04530DF62BBBCFF600CF006C /* renderWindow.hpp */,
+				04530DFF2BBBDA2400CF006C /* entity.cpp */,
+				04530E002BBBDA2400CF006C /* entity.hpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		04530DF22BBBCF2F00CF006C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				04530DF42BBBCF5A00CF006C /* defs.h */,
+			);
+			name = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,7 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */,
-				04530DD52BBBCD3500CF006C /* MainMenu.xib in Resources */,
+				04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,23 +182,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04530DD82BBBCD3500CF006C /* main.m in Sources */,
-				04530DD02BBBCD3400CF006C /* AppDelegate.m in Sources */,
+				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		04530DD32BBBCD3500CF006C /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04530DD42BBBCD3500CF006C /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		04530DDA2BBBCD3500CF006C /* Debug */ = {
@@ -273,6 +310,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M57UV7C59V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = GameOfShapes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -293,6 +334,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M57UV7C59V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = GameOfShapes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
