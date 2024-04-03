@@ -16,6 +16,9 @@
 #define SCREEN_HEIGHT 800
 #define WINDOW_TITLE "Game of Shapes!"
 
+#define SPEED 3
+#define deltaTime 0.0167f
+
 using namespace std;
 
 void logErrorAndExit(const char* msg, const char* error) {

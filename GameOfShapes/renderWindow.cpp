@@ -27,20 +27,20 @@ SDL_Texture* RenderWindow::loadTexture(const char* file) {
     return texture;
 }
 
+SDL_Renderer* RenderWindow::getRenderer() {
+    return renderer;
+}
+
+int RenderWindow::getRefreshRate() {
+    int displayIndex = SDL_GetWindowDisplayIndex(window);
+    SDL_DisplayMode mode;
+    SDL_GetDisplayMode(displayIndex, 0, &mode);
+    return mode.refresh_rate;
+}
+
 void RenderWindow::render(Entity& entity) {
-    SDL_Rect srcRect, dstRect;
-    
-    srcRect.x = entity.getFrame().x;
-    srcRect.y = entity.getFrame().y;
-    srcRect.w = entity.getFrame().w;
-    srcRect.h = entity.getFrame().h;
-    
-    dstRect.x = entity.getPos().x;
-    dstRect.y = entity.getPos().y;
-    dstRect.w = 64;
-    dstRect.h = 64;
-    
-    SDL_RenderCopy(renderer, entity.getTex(), NULL, &dstRect);
+    SDL_Rect dstRect {(int)entity.transform.position.x, (int)entity.transform.position.y, 64, 64};
+    SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect);
 }
 
 void RenderWindow::clear() {

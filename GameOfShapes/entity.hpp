@@ -8,21 +8,25 @@
 #define entity_hpp
 
 #include "defs.h"
-#include "math.hpp"
+#include "transform.hpp"
 
 class Entity
 {
 public:
-    Entity(Vector2D Pos, SDL_Texture* Texture);
-    Vector2D& getPos() {
-        return pos;
-    }
-    SDL_Texture* getTex();
-    SDL_Rect getFrame();
+    TransformComponent transform;
+    
+    Entity ();
+    Entity(SDL_Texture* Texture);
+        
+    Entity(const Vector2D& position, SDL_Texture* Texture);
+        
+    void update();
+    
+    SDL_Texture* getTex(SDL_Texture* Texture);
+    SDL_Texture* getTexture();
 
 private:
-    Vector2D pos;
-    SDL_Rect frame;
+    SDL_Rect collisionBox;
     SDL_Texture* texture;
 };
 

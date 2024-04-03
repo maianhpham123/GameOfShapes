@@ -6,20 +6,28 @@
 //
 
 #include "entity.hpp"
-#include "math.hpp"
+#include "vector2D.hpp"
+#include "defs.h"
+#include "renderWindow.hpp"
 
-Entity::Entity(Vector2D Pos, SDL_Texture* Texture) : pos(Pos), texture(Texture) {
-    frame.x = 0;
-    frame.y = 0;
+Entity::Entity() {}
+Entity::Entity(SDL_Texture* Texture) : texture(Texture) {}
+Entity::Entity(const Vector2D& position, SDL_Texture* Texture) {
+        transform.position = position;
+        texture = Texture;    
 }
 
-
-SDL_Texture* Entity::getTex() {
-    if (texture == NULL)
+SDL_Texture* Entity::getTex(SDL_Texture* Texture) {
+    if (Texture == NULL)
         cout << "getTex is not performed!" << endl;
+    return Texture;
+}
+
+SDL_Texture* Entity::getTexture() {
     return texture;
 }
 
-SDL_Rect Entity::getFrame() {
-    return frame;
+void Entity::update()
+{
+    transform.update();
 }
