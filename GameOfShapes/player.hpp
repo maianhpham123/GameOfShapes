@@ -9,19 +9,16 @@
 #define player_hpp
 
 #include "entity.hpp"
-#include "renderWindow.hpp"
 
-class Player {
+class Player : public Entity {
 public:
-    Player();
-    Player(RenderWindow& renderer);
-    void handleInput();
-    void update();
-    void render();
+    Player(RenderWindow& window, const char* textureFile);
+    void handleEvents(SDL_Event& event);
+    
+    void setPosition(float X, float Y);
 
 private:
-    Entity entity; // Player entity
-    RenderWindow& renderer;
+    KeyboardController keyboardController;
 };
 
 #endif /* player_hpp */

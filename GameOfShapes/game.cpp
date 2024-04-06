@@ -11,23 +11,28 @@
 #include "vector2D.cpp"
 #include "entity.cpp"
 #include "transform.hpp"
-#include "keyboardController.hpp"
+#include "player.cpp"
+#include "enemy.cpp"
 
 
-Game::Game() : window(), platform(window.loadTexture("yellow_circle.png")), enemy(window.loadTexture("Simple Shapes/Triangle.png")), keyboardController(), isRunning(true) {}
+/* Game::Game() : window(), platform(window.loadTexture("yellow_circle.png")), enemy(window.loadTexture("Simple Shapes/Triangle.png")), keyboardController(), isRunning(true) {}
+ */
+
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Triangle.png"), isRunning(true) {}
+
+
 Game::~Game() {
     window.clean();
     SDL_Quit();
 }
 
-// Game.cpp
-
 void Game::run() {
+    
     const float timeStep = 0.01f;
     float accumulator = 0.0f;
     float currentTime = utils::hireTimeInSeconds();
-
-    while (isRunning) {
+    
+    while (isRunning && !gameOver) {
         float newTime = utils::hireTimeInSeconds();
         float frameTime = newTime - currentTime;
 
@@ -45,7 +50,7 @@ void Game::run() {
 
         const float alpha = accumulator / timeStep;
         
-        update();
+        // update();
         checkGameOver();
         render();
     }
@@ -67,33 +72,48 @@ void Game::handleEvents() {
         if (event.type == SDL_QUIT)
             isRunning = false;
         else
-            keyboardController.handleEvents(event, platform);
+            // keyboardController.handleEvents(event, platform);
+            player.handleEvents(event);
     }
 }
 
 void Game::update() {
-    platform.update();
+    // platform.update();
+    player.update();
 }
 
 void Game::render() {
     window.clear();
-    window.render(platform);
+    // window.render(platform);
+    window.render(player);
+    window.render(enemy);
     
     //TODO: put this to a seperate file
     SDL_Rect dstRect {SCREEN_WIDTH/2 - 222, 200, 512, 444};
     SDL_RenderCopy(window.getRenderer(), enemy.getTexture(), NULL, &dstRect);
+    
     window.display();
 }
 
+//TODO: make this checkGameOver work!!!
 void Game::checkGameOver() {
     const float entityWidth = 64.0f;
-    const float entityHeight = 64.0f;
+        const float entityHeight = 64.0f;
+    
+        const float playerX = player.transform.position.x;
+        const float playerY = player.transform.position.y;
 
-    const float entityX = platform.transform.position.x;
-    const float entityY = platform.transform.position.y;
+        const float screenLeft = 0;
+        const float screenRight = SCREEN_WIDTH;
+        const float screenTop = 0;
+        const float screenBottom = SCREEN_HEIGHT;
 
-    if (entityX < -SCREEN_WIDTH/2 || entityX > SCREEN_WIDTH/2 ||
-        entityY < -SCREEN_HEIGHT/2 || entityY > SCREEN_HEIGHT/2) {
-        gameOver = true;
-    }
+        if (playerX < screenLeft ||
+            playerX + entityWidth > screenRight ||
+            playerY < screenTop ||
+            playerY + entityHeight > screenBottom) {
+            cerr << playerX << " " << playerY << endl;
+            cerr << "is out of boundaries" <<endl;
+            gameOver = true;
+        }
 }

@@ -13,6 +13,7 @@
 #include "entity.hpp"
 #include "keyboardController.hpp"
 #include "player.hpp"
+#include "enemy.hpp"
 
 class Game {
 public:
@@ -30,8 +31,9 @@ private:
 
     RenderWindow window;
     KeyboardController keyboardController;
-    Entity platform;
-    Entity enemy;
+    Player player;
+    // Entity platform;
+    Enemy enemy;
 
     bool isRunning;
     bool gameOver;

@@ -12,8 +12,8 @@
 
 Entity::Entity() {}
 Entity::Entity(SDL_Texture* Texture) : texture(Texture) {}
-Entity::Entity(const Vector2D& position, SDL_Texture* Texture) {
-        transform.position = position;
+Entity::Entity(const Vector2D& Position, SDL_Texture* Texture) {
+        transform.position = Position;
         texture = Texture;    
 }
 
