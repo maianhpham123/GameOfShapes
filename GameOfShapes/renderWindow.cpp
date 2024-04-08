@@ -38,8 +38,14 @@ int RenderWindow::getRefreshRate() {
     return mode.refresh_rate;
 }
 
-void RenderWindow::render(Entity& entity) {
+/*void RenderWindow::render(Entity& entity) {
     SDL_Rect dstRect {(int)entity.transform.position.x, (int)entity.transform.position.y, 64, 64};
+    SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect);
+}
+ */
+
+void RenderWindow::render(Entity& entity) {
+    SDL_Rect dstRect = entity.setDstRect(0, 0, 0, 0);  // Calculate the destination rectangle using the overridden function in Player class
     SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect);
 }
 

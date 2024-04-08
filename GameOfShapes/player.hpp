@@ -14,8 +14,9 @@ class Player : public Entity {
 public:
     Player(RenderWindow& window, const char* textureFile);
     void handleEvents(SDL_Event& event);
+    void update() override;
     
-    void setPosition(float X, float Y);
+    SDL_Rect setDstRect(int x, int y, int width, int height) const override;
 
 private:
     KeyboardController keyboardController;

@@ -9,6 +9,7 @@
 #include "vector2D.hpp"
 #include "defs.h"
 #include "renderWindow.hpp"
+#include "transform.hpp"
 
 Entity::Entity() {}
 Entity::Entity(SDL_Texture* Texture) : texture(Texture) {}
@@ -27,7 +28,18 @@ SDL_Texture* Entity::getTexture() {
     return texture;
 }
 
+/* SDL_Rect Entity::setDstRect(int x, int y, int width, int height) {
+    dstRect.x = x;
+    dstRect.y = y;
+    dstRect.w = width;
+    dstRect.h = height;
+    return dstRect;
+}
+ */
+
+/*
 void Entity::update()
 {
     transform.update();
 }
+*/

@@ -8,7 +8,7 @@
 #include "enemy.hpp"
 
 Enemy::Enemy(RenderWindow& window, const char* textureFile)
-: Entity(window.loadTexture(textureFile)) {
+: Entity(Vector2D(418.0f, 200.0f), window.loadTexture(textureFile)) {
     // Additional initialization for the Enemy class, if needed
 }
 
