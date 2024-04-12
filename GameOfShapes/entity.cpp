@@ -10,6 +10,7 @@
 #include "defs.h"
 #include "renderWindow.hpp"
 #include "transform.hpp"
+#include "checkCollision.hpp"
 
 Entity::Entity() {}
 Entity::Entity(SDL_Texture* Texture) : texture(Texture) {}
@@ -49,4 +50,12 @@ SDL_Rect Entity::setDstRect(int x, int y, int width, int height) const {
 }
  */
 
+vector<Vector2D> Entity::vertices() const {
+    return collisionVertices;
+}
 
+bool Entity::checkSATCollision (const Entity& other) const {
+    bool isIntersect = Intersect(vertices(), other.vertices());
+    if (isIntersect) return true;
+    return false;
+}

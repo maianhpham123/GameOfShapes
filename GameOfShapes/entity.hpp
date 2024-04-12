@@ -10,6 +10,7 @@
 #include "defs.h"
 #include "transform.hpp"
 #include "vector2D.hpp"
+#include <vector>
 
 class Entity
 {
@@ -32,15 +33,17 @@ public:
     //virtual SDL_Rect setCollisionBox(int x, int y, int width, int height) const = 0;
     
     //bool checkCollision (const Entity& other) const; //check AABB collision
+    
     virtual vector<Vector2D> vertices() const = 0;
-    
-    
     bool checkSATCollision (const Entity& other) const;
     
-protected:
+/*
+ protected:
     SDL_Rect collisionBox;
+ */
     
 private:
+    vector<Vector2D> collisionVertices;
     SDL_Rect dstRect;
     SDL_Texture* texture;
 };

@@ -51,7 +51,7 @@ void Game::run() {
         const float alpha = accumulator / timeStep;
         
         // update();
-        //checkCollision();
+        checkCollision();
         checkGameOver();
         render();
     }
@@ -108,6 +108,12 @@ void Game::render() {
     }
 }
  */
+
+void Game::checkCollision() {
+    if (player.checkSATCollision(enemy)) {
+        cerr << "You have collided!" << endl;
+    }
+}
 
 void Game::checkGameOver() {
     const float entityWidth = 64.0f;
