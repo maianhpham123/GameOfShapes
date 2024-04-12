@@ -29,7 +29,8 @@ SDL_Rect Player::setDstRect(int x, int y, int width, int height) const
     return dstRect;
 }
 
-SDL_Rect Player::setCollisionBox(int x, int y, int width, int height) const {
+/*
+ SDL_Rect Player::setCollisionBox(int x, int y, int width, int height) const {
     // Calculate the position and size of the circle collision box
     int radius = 32;
     int centerX = transform.position.x + radius;
@@ -44,4 +45,28 @@ SDL_Rect Player::setCollisionBox(int x, int y, int width, int height) const {
     collisionBox.h = diameter;
 
     return collisionBox;
+}
+ */
+
+//get the vertices
+vector<Vector2D> Player::vertices() const {
+    vector<Vector2D> playerVertices;
+    int radius = 32;
+    int centerX = transform.position.x + radius;
+    int centerY = transform.position.y + radius;
+    // int diameter = radius * 2;
+    
+    /*
+    collisionBox.x = centerX - radius;
+    collisionBox.y = centerY - radius;
+    collisionBox.w = diameter;
+    collisionBox.h = diameter;
+    */
+    
+    playerVertices.push_back(Vector2D(centerX - radius, centerY - radius));
+    playerVertices.push_back(Vector2D(centerX + radius, centerY - radius));
+    playerVertices.push_back(Vector2D(centerX + radius, centerY + radius));
+    playerVertices.push_back(Vector2D(centerX - radius, centerY + radius));
+    
+    return playerVertices;
 }

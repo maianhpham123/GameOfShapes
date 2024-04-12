@@ -28,9 +28,14 @@ public:
     SDL_Texture* getTexture();
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const = 0;
     
-    //collision
-    virtual SDL_Rect setCollisionBox(int x, int y, int width, int height) const = 0;
-    bool checkCollision (const Entity& other) const;
+    //AABB collision
+    //virtual SDL_Rect setCollisionBox(int x, int y, int width, int height) const = 0;
+    
+    //bool checkCollision (const Entity& other) const; //check AABB collision
+    virtual vector<Vector2D> vertices() const = 0;
+    
+    
+    bool checkSATCollision (const Entity& other) const;
     
 protected:
     SDL_Rect collisionBox;

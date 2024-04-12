@@ -8,6 +8,7 @@
 #ifndef player_hpp
 #define player_hpp
 
+#include <vector>
 #include "entity.hpp"
 
 class Player : public Entity {
@@ -18,7 +19,9 @@ public:
     
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     
-    SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
+    vector<Vector2D> vertices() const override;
+    
+    //SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
 private:
     KeyboardController keyboardController;
 };

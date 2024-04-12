@@ -27,7 +27,7 @@ private:
     void handleEvents();
     void update();
     void render();
-    void checkCollision();
+    //void checkCollision(); //check AABB collision
     void checkGameOver();
 
     RenderWindow window;

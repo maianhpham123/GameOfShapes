@@ -29,6 +29,7 @@ void Enemy::update() {
     // ...
 }
 
+/* used for checking AABB Collision
 SDL_Rect Enemy::setCollisionBox(int x, int y, int width, int height) const {
     // Calculate the position and size of the triangle collision box
     SDL_Rect collisionBox;
@@ -48,6 +49,24 @@ SDL_Rect Enemy::setCollisionBox(int x, int y, int width, int height) const {
     collisionBox.h = std::max({vertex1Y, vertex2Y, vertex3Y}) - collisionBox.y;
 
     return collisionBox;
+}
+ */
+
+vector<Vector2D> Enemy::vertices() const {
+    vector<Vector2D> enemyVertices;
+    
+    float vertex1X = transform.position.x;
+    float vertex1Y = transform.position.y + 444;
+    float vertex2X = transform.position.x + 512 / 2;
+    float vertex2Y = transform.position.y;
+    float vertex3X = transform.position.x + 512;
+    float vertex3Y = transform.position.y + 444;
+    
+    enemyVertices.push_back(Vector2D(vertex1X, vertex1Y));
+    enemyVertices.push_back(Vector2D(vertex2X, vertex2Y));
+    enemyVertices.push_back(Vector2D(vertex3X, vertex3Y));
+    
+    return enemyVertices;
 }
 
 

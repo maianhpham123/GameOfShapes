@@ -10,6 +10,7 @@
 
 #include "entity.hpp"
 #include "renderWindow.hpp"
+#include <vector>
 
 /*class Enemy : public Entity {
 public:
@@ -26,7 +27,10 @@ public:
 
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     
-    SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
+    //SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
+    
+    vector<Vector2D> vertices() const override;
+    
 
 private:
     // Additional member variables specific to the Enemy class

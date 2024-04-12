@@ -10,6 +10,7 @@
 
 #include "vector2D.hpp"
 #include "defs.h"
+#include <cmath>
 
 class TransformComponent
 {

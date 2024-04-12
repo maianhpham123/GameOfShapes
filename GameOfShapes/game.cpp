@@ -51,7 +51,7 @@ void Game::run() {
         const float alpha = accumulator / timeStep;
         
         // update();
-        checkCollision();
+        //checkCollision();
         checkGameOver();
         render();
     }
@@ -96,11 +96,18 @@ void Game::render() {
     window.display();
 }
 
-void Game::checkCollision() {
+/*
+ //check AABB collision
+ void Game::checkCollision() {
+    SDL_Rect playerBox = player.setCollisionBox(0, 0, 0, 0);
+    SDL_Rect enemyBox = enemy.setCollisionBox(0, 0, 0, 0);
     if(player.checkCollision(enemy)) {
+        cerr << "Player Collision Box: " << playerBox.x << " " << playerBox.y << " " << playerBox.w << " " << playerBox.h << endl;
+        cerr << "Enemy Collision Box: " << enemyBox.x << " " << enemyBox.y << " " << enemyBox.w << " " << enemyBox.h << endl;
         cout << "you have collided!" << endl;
     }
 }
+ */
 
 void Game::checkGameOver() {
     const float entityWidth = 64.0f;
