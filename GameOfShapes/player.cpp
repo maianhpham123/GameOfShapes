@@ -21,10 +21,27 @@ void Player::update() {
 SDL_Rect Player::setDstRect(int x, int y, int width, int height) const
 {
     SDL_Rect dstRect;
-    dstRect.x = x;  // Set the x-coordinate of the destination rectangle
-    dstRect.y = y;  // Set the y-coordinate of the destination rectangle
-    dstRect.w = width;  // Set the width of the destination rectangle
-    dstRect.h = height;  // Set the height of the destination rectangle
+    dstRect.x = transform.position.x;  // Set the x-coordinate of the destination rectangle
+    dstRect.y = transform.position.y;  // Set the y-coordinate of the destination rectangle
+    dstRect.w = 64;  // Set the width of the destination rectangle
+    dstRect.h = 64;  // Set the height of the destination rectangle
     // Additional calculations specific to the player's destination rectangle if needed
     return dstRect;
+}
+
+SDL_Rect Player::setCollisionBox(int x, int y, int width, int height) const {
+    // Calculate the position and size of the circle collision box
+    int radius = 32;
+    int centerX = transform.position.x + radius;
+    int centerY = transform.position.y + radius;
+    int diameter = radius * 2;
+
+    // Create a rectangle that encloses the circle collision box
+    SDL_Rect collisionBox;
+    collisionBox.x = centerX - radius;
+    collisionBox.y = centerY - radius;
+    collisionBox.w = diameter;
+    collisionBox.h = diameter;
+
+    return collisionBox;
 }

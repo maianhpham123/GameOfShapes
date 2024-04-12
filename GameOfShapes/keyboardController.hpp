@@ -18,19 +18,19 @@ public:
         if (event.type == SDL_KEYDOWN) {
             switch(event.key.keysym.sym) {
                 case SDLK_LEFT:
-                    cout << "left is pressed" << endl;
+                    //cout << "left is pressed" << endl;
                     entity.transform.velocity.x = -1.0f;
                     break;
                 case SDLK_RIGHT:
-                    cout << "right is pressed" << endl;
+                    //cout << "right is pressed" << endl;
                     entity.transform.velocity.x = 1.0f;
                     break;
                 case SDLK_UP:
-                    cout << "up is pressed" << endl;
+                    //cout << "up is pressed" << endl;
                     entity.transform.velocity.y = -1.0f;
                     break;
                 case SDLK_DOWN:
-                    cout << "down is pressed" << endl;
+                    //cout << "down is pressed" << endl;
                     entity.transform.velocity.y = 1.0f;
                     break;
             }
@@ -39,19 +39,19 @@ public:
         else if (event.type == SDL_KEYUP) {
             switch(event.key.keysym.sym) {
                 case SDLK_LEFT:
-                    cout << "left is not pressed" << endl;
+                    //cout << "left is not pressed" << endl;
                     entity.transform.velocity.x = 0.0f;
                     break;
                 case SDLK_RIGHT:
-                    cout << "right is not pressed" << endl;
+                    //cout << "right is not pressed" << endl;
                     entity.transform.velocity.x = 0.0f;
                     break;
                 case SDLK_UP:
-                    cout << "up is not pressed" << endl;
+                    //cout << "up is not pressed" << endl;
                     entity.transform.velocity.y = 0.0f;
                     break;
                 case SDLK_DOWN:
-                    cout << "down is not pressed" << endl;
+                    //cout << "down is not pressed" << endl;
                     entity.transform.velocity.y = 0.0f;
                     break;
             }

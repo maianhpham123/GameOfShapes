@@ -25,6 +25,8 @@ public:
     void update() override;
 
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
+    
+    SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
 
 private:
     // Additional member variables specific to the Enemy class

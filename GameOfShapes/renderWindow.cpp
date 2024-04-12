@@ -45,8 +45,9 @@ int RenderWindow::getRefreshRate() {
  */
 
 void RenderWindow::render(Entity& entity) {
-    SDL_Rect dstRect = entity.setDstRect(0, 0, 0, 0);  // Calculate the destination rectangle using the overridden function in Player class
-    SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect);
+    SDL_Rect dstRect = entity.setDstRect(0,0,0,0); // Get the destination rectangle of the entity
+
+    SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect); // Render the entity's texture
 }
 
 void RenderWindow::clear() {

@@ -35,7 +35,7 @@ public:
     void update() {
         position.x += velocity.x * SPEED;
         position.y += velocity.y * SPEED;
-        cout << "(" << position.x << ", " << position.y << ")" << endl;
+        //cout << "(" << position.x << ", " << position.y << ")" << endl; //for testing
     }
 };
 

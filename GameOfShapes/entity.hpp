@@ -20,15 +20,22 @@ public:
     Entity(SDL_Texture* Texture);
         
     Entity(const Vector2D& position, SDL_Texture* Texture);
-        
+    
+    virtual ~Entity() {}
     virtual void update();
     
     SDL_Texture* getTex(SDL_Texture* Texture);
     SDL_Texture* getTexture();
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const = 0;
-
-private:
+    
+    //collision
+    virtual SDL_Rect setCollisionBox(int x, int y, int width, int height) const = 0;
+    bool checkCollision (const Entity& other) const;
+    
+protected:
     SDL_Rect collisionBox;
+    
+private:
     SDL_Rect dstRect;
     SDL_Texture* texture;
 };

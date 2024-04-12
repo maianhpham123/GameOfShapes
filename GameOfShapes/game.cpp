@@ -51,6 +51,7 @@ void Game::run() {
         const float alpha = accumulator / timeStep;
         
         // update();
+        checkCollision();
         checkGameOver();
         render();
     }
@@ -89,13 +90,18 @@ void Game::render() {
     window.render(enemy);
     
     //TODO: put this to a seperate file
-    SDL_Rect dstRect {SCREEN_WIDTH/2 - 222, 200, 512, 444};
-    SDL_RenderCopy(window.getRenderer(), enemy.getTexture(), NULL, &dstRect);
+    /*SDL_Rect dstRect {SCREEN_WIDTH/2 - 222, 200, 512, 444};
+    SDL_RenderCopy(window.getRenderer(), enemy.getTexture(), NULL, &dstRect);*/
     
     window.display();
 }
 
-//TODO: make this checkGameOver work!!!
+void Game::checkCollision() {
+    if(player.checkCollision(enemy)) {
+        cout << "you have collided!" << endl;
+    }
+}
+
 void Game::checkGameOver() {
     const float entityWidth = 64.0f;
         const float entityHeight = 64.0f;

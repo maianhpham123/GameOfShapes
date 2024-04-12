@@ -27,6 +27,7 @@ private:
     void handleEvents();
     void update();
     void render();
+    void checkCollision();
     void checkGameOver();
 
     RenderWindow window;
