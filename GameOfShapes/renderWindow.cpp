@@ -17,6 +17,8 @@ RenderWindow::RenderWindow() : window(NULL), renderer(NULL) {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (renderer == NULL)
         logErrorAndExit("CreateRenderer", SDL_GetError());
+    
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 }
 
 SDL_Texture* RenderWindow::loadTexture(const char* file) {
@@ -29,13 +31,6 @@ SDL_Texture* RenderWindow::loadTexture(const char* file) {
 
 SDL_Renderer* RenderWindow::getRenderer() {
     return renderer;
-}
-
-int RenderWindow::getRefreshRate() {
-    int displayIndex = SDL_GetWindowDisplayIndex(window);
-    SDL_DisplayMode mode;
-    SDL_GetDisplayMode(displayIndex, 0, &mode);
-    return mode.refresh_rate;
 }
 
 void RenderWindow::render(Entity& entity) {
@@ -54,5 +49,10 @@ void RenderWindow::display() {
 }
 
 void RenderWindow::clean() {
+    SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+    renderer = NULL;
+    window = NULL;
+    IMG_Quit();
+    SDL_Quit();
 }

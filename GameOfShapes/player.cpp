@@ -15,7 +15,7 @@ void Player::handleEvents(SDL_Event& event) {
 }
 
 void Player::update() {
-    transform.update();
+    transform.translate();
 }
 
 SDL_Rect Player::setDstRect(int x, int y, int width, int height) const

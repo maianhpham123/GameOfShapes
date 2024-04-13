@@ -9,7 +9,6 @@
 #define enemy_hpp
 
 #include "entity.hpp"
-#include "renderWindow.hpp"
 #include <vector>
 
 class Enemy : public Entity {
@@ -20,7 +19,6 @@ public:
     vector<Vector2D> vertices() const override;
     
 private:
-    float rotationAngle;
 };
 
 #endif /* enemy_hpp */

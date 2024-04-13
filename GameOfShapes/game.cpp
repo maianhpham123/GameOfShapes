@@ -6,32 +6,43 @@
 //
 
 #include "game.hpp"
+#include "timer.cpp"
 #include "renderWindow.cpp"
 #include "vector2D.cpp"
 #include "entity.cpp"
 #include "transform.hpp"
 #include "player.cpp"
 #include "enemy.cpp"
+#include "defs.h"
 
 
 /* Game::Game() : window(), platform(window.loadTexture("yellow_circle.png")), enemy(window.loadTexture("Simple Shapes/Triangle.png")), keyboardController(), isRunning(true) {}
  */
 
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Triangle.png"), isRunning(true) {}
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Triangle.png"), isRunning(true) {
+    timer = Timer::Instance();
+}
 
 
 Game::~Game() {
+    Timer::Release();
+    timer = NULL;
     window.clean();
     SDL_Quit();
 }
 
 void Game::run() {
+    
     while (isRunning && !gameOver) {
-        handleEvents();
-        update();
-        checkCollision();
-        checkGameOver();
-        render();
+        timer->update();
+        if (timer->DeltaTime() >= (1.0f / FRAME_RATE)) {
+            handleEvents();
+            update();
+            checkCollision();
+            checkGameOver();
+            render();
+            timer->Reset();
+        }
     }
     
     if (gameOver) {
@@ -61,6 +72,8 @@ void Game::render() {
     window.clear();
     window.render(player);
     window.render(enemy);
+    
+    
     
     //TODO: draw the oriented bounding box to see the bug
     vector<Vector2D> enemyOrientedBoundingBox = enemy.vertices();

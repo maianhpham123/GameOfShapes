@@ -9,6 +9,7 @@
 #define game_hpp
 
 #include "defs.h"
+#include "timer.hpp"
 #include "renderWindow.hpp"
 #include "entity.hpp"
 #include "keyboardController.hpp"
@@ -35,7 +36,9 @@ private:
     Player player;
     // Entity platform;
     Enemy enemy;
-
+    Timer* timer;
+    const int FRAME_RATE = 60;
+    
     bool isRunning;
     bool gameOver;
 };

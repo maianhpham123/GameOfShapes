@@ -16,8 +16,7 @@
 #define SCREEN_HEIGHT 800
 #define WINDOW_TITLE "Game of Shapes!"
 
-#define SPEED 3
-#define deltaTime 0.0167f
+#define SPEED 5
 
 using namespace std;
 

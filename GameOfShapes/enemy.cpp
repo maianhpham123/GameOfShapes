@@ -8,9 +8,7 @@
 #include "enemy.hpp"
 
 Enemy::Enemy(RenderWindow& window, const char* textureFile)
-: Entity(Vector2D(418.0f, 200.0f), window.loadTexture(textureFile)), rotationAngle(0.0f) {
-    // Additional initialization for the Enemy class, if needed
-}
+: Entity(Vector2D(418.0f, 200.0f), window.loadTexture(textureFile)) {}
 
 SDL_Rect Enemy::setDstRect(int x, int y, int width, int height) const {
     SDL_Rect dstRect;
@@ -21,9 +19,7 @@ SDL_Rect Enemy::setDstRect(int x, int y, int width, int height) const {
     return dstRect;
 }
 
-void Enemy::update() {
-    rotationAngle += 1.0f;
-}
+void Enemy::update() {}
 
 vector<Vector2D> Enemy::vertices() const {
     vector<Vector2D> enemyVertices;

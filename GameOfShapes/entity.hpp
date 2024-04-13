@@ -10,6 +10,8 @@
 #include "defs.h"
 #include "transform.hpp"
 #include "vector2D.hpp"
+#include "renderWindow.hpp"
+#include "checkCollision.hpp"
 #include <vector>
 
 class Entity
@@ -19,15 +21,15 @@ public:
     
     Entity ();
     Entity(SDL_Texture* Texture);
-        
     Entity(const Vector2D& position, SDL_Texture* Texture);
     
     virtual ~Entity() {}
-    virtual void update();
     
-    SDL_Texture* getTex(SDL_Texture* Texture);
     SDL_Texture* getTexture();
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const = 0;
+    
+    virtual void update();
+    //virtual void render();
     
     virtual vector<Vector2D> vertices() const = 0;
     bool checkSATCollision (const Entity& other) const;
@@ -36,7 +38,7 @@ private:
     vector<Vector2D> collisionVertices;
     SDL_Rect dstRect;
     SDL_Texture* texture;
-    //float rotationAngle;
+    float rotation;
 };
 
 #endif /* entity_hpp */

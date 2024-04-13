@@ -16,9 +16,6 @@ class RenderWindow
 public:
     RenderWindow();
     SDL_Texture* loadTexture(const char* file);
-    
-    int getRefreshRate();
-    
     SDL_Renderer* getRenderer();
     
     void render(Entity& entity);

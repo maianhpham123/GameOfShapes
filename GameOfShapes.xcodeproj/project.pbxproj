@@ -48,6 +48,8 @@
 		04530E082BBBECC700CF006C /* vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector2D.hpp; sourceTree = "<group>"; };
 		048B10082BCAB440006108F1 /* menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		048B10092BCAB440006108F1 /* menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = menu.hpp; sourceTree = "<group>"; };
+		048B100D2BCAEB5E006108F1 /* timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
+		048B100E2BCAEB5E006108F1 /* timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
 		04945EDB2BC9AF7700A40CD2 /* maths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = maths.hpp; sourceTree = "<group>"; };
 		04945EE22BC9C0BC00A40CD2 /* checkCollision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = checkCollision.hpp; sourceTree = "<group>"; };
 		04C2B2782BBF8AAF00273C2D /* enemy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
@@ -135,6 +137,8 @@
 				042044FB2BBD4A1700C205FB /* characters */,
 				048B10082BCAB440006108F1 /* menu.cpp */,
 				048B10092BCAB440006108F1 /* menu.hpp */,
+				048B100D2BCAEB5E006108F1 /* timer.cpp */,
+				048B100E2BCAEB5E006108F1 /* timer.hpp */,
 			);
 			name = src;
 			sourceTree = "<group>";

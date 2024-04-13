@@ -33,14 +33,10 @@ public:
         velocity.y = 0;
     }
     
-    void update() {
+    void translate() {
         position.x += velocity.x * SPEED;
         position.y += velocity.y * SPEED;
         //cout << "(" << position.x << ", " << position.y << ")" << endl; 
-    }
-    
-    void rotate(float angle) {
-        
     }
 };
 

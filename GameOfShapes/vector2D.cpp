@@ -4,8 +4,6 @@
 //
 //  Created by mac on 4/2/24.
 //
-
-#include "defs.h"
 #include "vector2D.hpp"
 
 Vector2D::Vector2D() {

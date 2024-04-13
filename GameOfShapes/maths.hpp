@@ -8,7 +8,11 @@
 #ifndef maths_hpp
 #define maths_hpp
 
+#include <cmath>
 #include "vector2D.hpp"
+
+#define PI 3.14159265
+#define DEG_TO_RAD PI / 180.0f
 
 float length(Vector2D a) {
     return sqrt(a.x * a.x + a.y * a.y);
@@ -31,6 +35,11 @@ float dotProduct (Vector2D a, Vector2D b) {
 
 float crossProduct (Vector2D a, Vector2D b) {
     return a.x * b.y - a.y * b.x;
+}
+
+Vector2D rotateVector(Vector2D& vec, float angle) {
+    float radAngle = (float) (angle * DEG_TO_RAD);
+    return Vector2D((float)(vec.x * cos(radAngle) - vec.y * sin(radAngle)), (float)(vec.x * sin(radAngle) + vec.y * cos(radAngle)));
 }
 
 #endif /* maths_hpp */
