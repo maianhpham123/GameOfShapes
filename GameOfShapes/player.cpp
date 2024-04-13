@@ -51,9 +51,9 @@ SDL_Rect Player::setDstRect(int x, int y, int width, int height) const
 //get the vertices
 vector<Vector2D> Player::vertices() const {
     vector<Vector2D> playerVertices;
-    int radius = 32;
-    int centerX = transform.position.x + radius;
-    int centerY = transform.position.y + radius;
+    float radius = 32.0f;
+    float centerX = (float) (transform.position.x + radius);
+    float centerY = (float) (transform.position.y + radius);
     // int diameter = radius * 2;
     
     /*
@@ -67,6 +67,9 @@ vector<Vector2D> Player::vertices() const {
     playerVertices.push_back(Vector2D(centerX + radius, centerY - radius));
     playerVertices.push_back(Vector2D(centerX + radius, centerY + radius));
     playerVertices.push_back(Vector2D(centerX - radius, centerY + radius));
+    
+    //for debug
+    //cout << playerVertices[1].x << ", " << playerVertices[1].y << endl;
     
     return playerVertices;
 }

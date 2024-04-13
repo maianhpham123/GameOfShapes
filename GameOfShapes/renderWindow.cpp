@@ -51,6 +51,7 @@ void RenderWindow::render(Entity& entity) {
 }
 
 void RenderWindow::clear() {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
 }
 

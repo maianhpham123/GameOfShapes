@@ -50,14 +50,14 @@ void Game::run() {
 
         const float alpha = accumulator / timeStep;
         
-        // update();
+        update();
         checkCollision();
         checkGameOver();
         render();
     }
     
     if (gameOver) {
-        cout << "End game!" << endl;
+        cerr << "End game!" << endl;
         isRunning = false;
     }
     
@@ -93,6 +93,15 @@ void Game::render() {
     /*SDL_Rect dstRect {SCREEN_WIDTH/2 - 222, 200, 512, 444};
     SDL_RenderCopy(window.getRenderer(), enemy.getTexture(), NULL, &dstRect);*/
     
+    //TODO: draw the oriented bounding box to see the bug
+    vector<Vector2D> enemyOrientedBoundingBox = enemy.vertices();
+    for (int i = 0; i < (int) enemyOrientedBoundingBox.size(); i++) {
+        Vector2D vec1 = enemyOrientedBoundingBox[i];
+        Vector2D vec2 = enemyOrientedBoundingBox[(i+1) % (int) enemyOrientedBoundingBox.size()];
+        SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 0, 255);
+        SDL_RenderDrawLine(window.getRenderer(), vec1.x, vec1.y, vec2.x, vec2.y);
+    }
+    
     window.display();
 }
 
@@ -110,8 +119,12 @@ void Game::render() {
  */
 
 void Game::checkCollision() {
+    //cout << "Player: " << player.vertices()[0].x << ", " << player.vertices()[0].y << endl;
     if (player.checkSATCollision(enemy)) {
+        //cerr << player.vertices()[0].x << ", " << player.vertices()[0].y << endl;
         cerr << "You have collided!" << endl;
+        //for checking collision
+        //gameOver = true; //it worked!
     }
 }
 

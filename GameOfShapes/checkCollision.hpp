@@ -14,10 +14,7 @@
 
 void ProjectVertices(const vector<Vector2D>& vertices, const Vector2D& axis, float& min, float& max) {
     for (int i = 0; i < (int) vertices.size(); i++) {
-        
-        min = std::numeric_limits<float>::max();
-        max = std::numeric_limits<float>::min();
-        
+
         Vector2D v = vertices[i];
         float proj = dotProduct(v, axis);
         
@@ -30,6 +27,7 @@ void ProjectVertices(const vector<Vector2D>& vertices, const Vector2D& axis, flo
 bool Intersect (const vector<Vector2D>& verticesA, const vector<Vector2D>& verticesB)
 {
     // for object1
+    
     for (int i = 0; i < (int) verticesA.size(); i++) {
         Vector2D va = verticesA[i];
         Vector2D vb = verticesA[(i+1) % (int) verticesA.size()];
@@ -44,6 +42,10 @@ bool Intersect (const vector<Vector2D>& verticesA, const vector<Vector2D>& verti
         
         ProjectVertices(verticesA, axis, minA, maxA);
         ProjectVertices(verticesB, axis, minB, maxB);
+        
+        //for debug
+        cout << "A: " << minA << ", " << maxA << endl;
+        cout << "B: " << minB << ", " << maxB << endl;
         
         if (minA >= maxB || minB >= maxA) return false;
     }
