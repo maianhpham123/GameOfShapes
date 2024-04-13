@@ -22,6 +22,7 @@ public:
     SDL_Renderer* getRenderer();
     
     void render(Entity& entity);
+
     void clear();
     void display();
     void clean();

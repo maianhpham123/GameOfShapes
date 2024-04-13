@@ -37,18 +37,8 @@ SDL_Rect Entity::setDstRect(int x, int y, int width, int height) const {
     dstRect.y = y;
     dstRect.w = width;
     dstRect.h = height;
-    // Additional calculations specific to the entity's destination rectangle if needed
     return dstRect;
 }
-
-//AABB collision: i dont want to delete because it's the most primitive way to check collision
-/*
- bool Entity::checkCollision(const Entity& other) const {
-    SDL_Rect collisionBox1 = setCollisionBox(collisionBox.x, collisionBox.y, collisionBox.w, collisionBox.h);
-    SDL_Rect collisionBox2 = setCollisionBox(other.collisionBox.x, other.collisionBox.y, other.collisionBox.w, other.collisionBox.h);
-    return SDL_HasIntersection(&collisionBox1, &collisionBox2) == SDL_TRUE;
-}
- */
 
 vector<Vector2D> Entity::vertices() const {
     return collisionVertices;

@@ -21,7 +21,6 @@ public:
     
     vector<Vector2D> vertices() const override;
     
-    //SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
 private:
     KeyboardController keyboardController;
 };

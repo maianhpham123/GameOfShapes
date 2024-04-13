@@ -16,11 +16,11 @@
 		04530DF02BBBCF2100CF006C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04530DEF2BBBCF2100CF006C /* main.cpp */; };
 		04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 04530DFC2BBBD6F800CF006C /* yellow_circle.png */; };
 		04530E052BBBE78700CF006C /* Simple Shapes in Resources */ = {isa = PBXBuildFile; fileRef = 04530E042BBBE78700CF006C /* Simple Shapes */; };
+		048B100A2BCAB440006108F1 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 048B10082BCAB440006108F1 /* menu.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		042044832BBC258900C205FB /* components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = components.h; sourceTree = "<group>"; };
-		0420448B2BBC498800C205FB /* utils.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = utils.hpp; sourceTree = "<group>"; };
 		042044E52BBCE71700C205FB /* keyboardController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = keyboardController.hpp; sourceTree = "<group>"; };
 		042044E92BBCE8EC00C205FB /* transform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = transform.hpp; sourceTree = "<group>"; };
 		042044F12BBD1A7C00C205FB /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
@@ -46,6 +46,8 @@
 		04530E042BBBE78700CF006C /* Simple Shapes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Simple Shapes"; path = "../../../../../../../../Volumes/Data/game/Simple Shapes"; sourceTree = "<group>"; };
 		04530E072BBBECC700CF006C /* vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vector2D.cpp; sourceTree = "<group>"; };
 		04530E082BBBECC700CF006C /* vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector2D.hpp; sourceTree = "<group>"; };
+		048B10082BCAB440006108F1 /* menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
+		048B10092BCAB440006108F1 /* menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = menu.hpp; sourceTree = "<group>"; };
 		04945EDB2BC9AF7700A40CD2 /* maths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = maths.hpp; sourceTree = "<group>"; };
 		04945EE22BC9C0BC00A40CD2 /* checkCollision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = checkCollision.hpp; sourceTree = "<group>"; };
 		04C2B2782BBF8AAF00273C2D /* enemy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
@@ -131,6 +133,8 @@
 				042044F12BBD1A7C00C205FB /* game.cpp */,
 				042044F22BBD1A7C00C205FB /* game.hpp */,
 				042044FB2BBD4A1700C205FB /* characters */,
+				048B10082BCAB440006108F1 /* menu.cpp */,
+				048B10092BCAB440006108F1 /* menu.hpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -139,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				04530DF42BBBCF5A00CF006C /* defs.h */,
-				0420448B2BBC498800C205FB /* utils.hpp */,
 				042044832BBC258900C205FB /* components.h */,
 			);
 			name = include;
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048B100A2BCAB440006108F1 /* menu.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

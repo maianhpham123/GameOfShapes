@@ -6,7 +6,6 @@
 //
 
 #include "game.hpp"
-#include "utils.hpp"
 #include "renderWindow.cpp"
 #include "vector2D.cpp"
 #include "entity.cpp"
@@ -27,29 +26,8 @@ Game::~Game() {
 }
 
 void Game::run() {
-    
-    const float timeStep = 0.01f;
-    float accumulator = 0.0f;
-    float currentTime = utils::hireTimeInSeconds();
-    
     while (isRunning && !gameOver) {
-        float newTime = utils::hireTimeInSeconds();
-        float frameTime = newTime - currentTime;
-
-        if (frameTime > 0.25f)
-            frameTime = 0.25f;
-
-        currentTime = newTime;
-        accumulator += frameTime;
-
         handleEvents();
-        while (accumulator >= timeStep) {
-            update();
-            accumulator -= timeStep;
-        }
-
-        const float alpha = accumulator / timeStep;
-        
         update();
         checkCollision();
         checkGameOver();
@@ -64,37 +42,30 @@ void Game::run() {
     SDL_Quit();
 }
 
-
-// Game.cpp
-
 void Game::handleEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT)
             isRunning = false;
         else
-            // keyboardController.handleEvents(event, platform);
             player.handleEvents(event);
     }
 }
 
 void Game::update() {
-    // platform.update();
     player.update();
+    enemy.update();
 }
 
 void Game::render() {
     window.clear();
-    // window.render(platform);
     window.render(player);
     window.render(enemy);
     
-    //TODO: put this to a seperate file
-    /*SDL_Rect dstRect {SCREEN_WIDTH/2 - 222, 200, 512, 444};
-    SDL_RenderCopy(window.getRenderer(), enemy.getTexture(), NULL, &dstRect);*/
-    
     //TODO: draw the oriented bounding box to see the bug
     vector<Vector2D> enemyOrientedBoundingBox = enemy.vertices();
+    vector<Vector2D> playerOrientedBoundingBox = player.vertices();
+    
     for (int i = 0; i < (int) enemyOrientedBoundingBox.size(); i++) {
         Vector2D vec1 = enemyOrientedBoundingBox[i];
         Vector2D vec2 = enemyOrientedBoundingBox[(i+1) % (int) enemyOrientedBoundingBox.size()];
@@ -102,30 +73,24 @@ void Game::render() {
         SDL_RenderDrawLine(window.getRenderer(), vec1.x, vec1.y, vec2.x, vec2.y);
     }
     
+    for (int i = 0; i < (int) playerOrientedBoundingBox.size(); i++) {
+        Vector2D vec1 = playerOrientedBoundingBox[i];
+        Vector2D vec2 = playerOrientedBoundingBox[(i+1) % (int) playerOrientedBoundingBox.size()];
+        SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 0, 255);
+        SDL_RenderDrawLine(window.getRenderer(), vec1.x, vec1.y, vec2.x, vec2.y);
+    }
+    
     window.display();
 }
 
-/*
- //check AABB collision
- void Game::checkCollision() {
-    SDL_Rect playerBox = player.setCollisionBox(0, 0, 0, 0);
-    SDL_Rect enemyBox = enemy.setCollisionBox(0, 0, 0, 0);
-    if(player.checkCollision(enemy)) {
-        cerr << "Player Collision Box: " << playerBox.x << " " << playerBox.y << " " << playerBox.w << " " << playerBox.h << endl;
-        cerr << "Enemy Collision Box: " << enemyBox.x << " " << enemyBox.y << " " << enemyBox.w << " " << enemyBox.h << endl;
-        cout << "you have collided!" << endl;
-    }
-}
- */
-
 void Game::checkCollision() {
-    //cout << "Player: " << player.vertices()[0].x << ", " << player.vertices()[0].y << endl;
     if (player.checkSATCollision(enemy)) {
-        //cerr << player.vertices()[0].x << ", " << player.vertices()[0].y << endl;
-        cerr << "You have collided!" << endl;
+        cout << "You have collided!" << endl;
         //for checking collision
         //gameOver = true; //it worked!
     }
+    
+    else cout << "nothing happens" << endl;
 }
 
 void Game::checkGameOver() {
