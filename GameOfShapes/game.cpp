@@ -9,6 +9,7 @@
 #include "timer.cpp"
 #include "renderWindow.cpp"
 #include "vector2D.cpp"
+#include "mouse.cpp"
 #include "entity.cpp"
 #include "transform.hpp"
 #include "player.cpp"
@@ -19,7 +20,7 @@
 /* Game::Game() : window(), platform(window.loadTexture("yellow_circle.png")), enemy(window.loadTexture("Simple Shapes/Triangle.png")), keyboardController(), isRunning(true) {}
  */
 
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Triangle.png"), isRunning(true) {
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()) {
     timer = Timer::Instance();
 }
 
@@ -60,22 +61,26 @@ void Game::handleEvents() {
             isRunning = false;
         else
             player.handleEvents(event);
+            mouse.handleEvents(event);
     }
 }
 
 void Game::update() {
     player.update();
     enemy.update();
+    mouse.update();
 }
 
 void Game::render() {
     window.clear();
     window.render(player);
     window.render(enemy);
+    enemy.transform.rotate(100 * timer->DeltaTime());
     
-    
+    mouse.render();
     
     //TODO: draw the oriented bounding box to see the bug
+    /*
     vector<Vector2D> enemyOrientedBoundingBox = enemy.vertices();
     vector<Vector2D> playerOrientedBoundingBox = player.vertices();
     
@@ -92,11 +97,13 @@ void Game::render() {
         SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 0, 255);
         SDL_RenderDrawLine(window.getRenderer(), vec1.x, vec1.y, vec2.x, vec2.y);
     }
+     */
     
     window.display();
 }
 
 void Game::checkCollision() {
+    /*
     if (player.checkSATCollision(enemy)) {
         cout << "You have collided!" << endl;
         //for checking collision
@@ -104,6 +111,7 @@ void Game::checkCollision() {
     }
     
     else cout << "nothing happens" << endl;
+     */
 }
 
 void Game::checkGameOver() {

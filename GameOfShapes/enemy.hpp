@@ -16,7 +16,7 @@ public:
     Enemy(RenderWindow& window, const char* textureFile);
     void update() override;
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
-    vector<Vector2D> vertices() const override;
+    //vector<Vector2D> vertices() const override;
     
 private:
 };

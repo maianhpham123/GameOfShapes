@@ -12,7 +12,7 @@
 #include "vector2D.hpp"
 #include "maths.hpp"
 
-
+/*
 void ProjectVertices(const vector<Vector2D>& vertices, const Vector2D& axis, float& min, float& max) {
     for (int i = 0; i < (int) vertices.size(); i++) {
 
@@ -47,8 +47,8 @@ bool Intersect (const vector<Vector2D>& verticesA, const vector<Vector2D>& verti
         
         if (minA >= maxB || minB >= maxA) return false;
         else {
-            cout << "minA1: " << minA << " " << "maxA1: " << maxA << endl;
-            cout << "minB1: " << minB << " " << "maxB1: " << maxB << endl;
+            //cout << "minA1: " << minA << " " << "maxA1: " << maxA << endl;
+            //cout << "minB1: " << minB << " " << "maxB1: " << maxB << endl;
         }
     }
     
@@ -70,12 +70,17 @@ bool Intersect (const vector<Vector2D>& verticesA, const vector<Vector2D>& verti
         
         if (minA >= maxB || minB >= maxA) return false;
         else {
-            cout << "minA2: " << minA << " " << "maxA2: " << maxA << endl;
-            cout << "minB2: " << minB << " " << "maxB2: " << maxB << endl;
+            //cout << "minA2: " << minA << " " << "maxA2: " << maxA << endl;
+            //cout << "minB2: " << minB << " " << "maxB2: " << maxB << endl;
         }
     }
     
     return true;
+}
+*/
+
+bool checkRectangleCollision (SDL_Rect rect1, SDL_Rect rect2) {
+    return SDL_HasIntersection(&rect1, &rect2);
 }
 
 #endif /* checkCollision_hpp */

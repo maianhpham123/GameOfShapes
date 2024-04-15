@@ -8,24 +8,31 @@
 #ifndef transform_hpp
 #define transform_hpp
 
-#include "vector2D.hpp"
 #include "defs.h"
 #include <cmath>
+#include "maths.hpp"
 
 class TransformComponent
 {
 public:
     Vector2D position;
     Vector2D velocity;
+    float rotation;
+    float sinValue;
+    float cosValue;
     
     TransformComponent() {
         position.x = 0.0f;
         position.y = 0.0f;
+        rotation = 0.0f;
     }
     
-    TransformComponent(float X, float Y) {
-        position.x = X;
-        position.y = Y;
+    TransformComponent(Vector2D vec, float Rotation) {
+        position.x = vec.x;
+        position.y = vec.y;
+        rotation = Rotation;
+        sinValue = sin(Rotation);
+        cosValue = cos(Rotation);
     }
     
     void init() {
@@ -37,6 +44,10 @@ public:
         position.x += velocity.x * SPEED;
         position.y += velocity.y * SPEED;
         //cout << "(" << position.x << ", " << position.y << ")" << endl; 
+    }
+    
+    void rotate(float amount) {
+        rotation += amount;
     }
 };
 

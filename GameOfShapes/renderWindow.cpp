@@ -36,7 +36,8 @@ SDL_Renderer* RenderWindow::getRenderer() {
 void RenderWindow::render(Entity& entity) {
     SDL_Rect dstRect = entity.setDstRect(0, 0, 0, 0); 
     
-    SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect);
+    //SDL_RenderCopy(renderer, entity.getTexture(), NULL, &dstRect);
+    SDL_RenderCopyEx(renderer, entity.getTexture(), NULL, &dstRect, entity.transform.rotation, NULL, SDL_FLIP_NONE);
 }
 
 void RenderWindow::clear() {

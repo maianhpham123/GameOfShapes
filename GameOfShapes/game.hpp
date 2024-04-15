@@ -13,6 +13,7 @@
 #include "renderWindow.hpp"
 #include "entity.hpp"
 #include "keyboardController.hpp"
+#include "mouse.hpp"
 #include "player.hpp"
 #include "enemy.hpp"
 
@@ -36,6 +37,7 @@ private:
     Player player;
     // Entity platform;
     Enemy enemy;
+    Mouse mouse;
     Timer* timer;
     const int FRAME_RATE = 60;
     

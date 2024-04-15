@@ -28,6 +28,7 @@ SDL_Rect Player::setDstRect(int x, int y, int width, int height) const
     return dstRect;
 }
 
+/*
 vector<Vector2D> Player::vertices() const {
     vector<Vector2D> playerVertices;
     float radius = 30.0f;
@@ -41,3 +42,4 @@ vector<Vector2D> Player::vertices() const {
     
     return playerVertices;
 }
+ */

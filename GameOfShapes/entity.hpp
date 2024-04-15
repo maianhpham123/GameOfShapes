@@ -28,17 +28,21 @@ public:
     SDL_Texture* getTexture();
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const = 0;
     
-    virtual void update();
-    //virtual void render();
+    float rotate (float Rotation);
     
-    virtual vector<Vector2D> vertices() const = 0;
-    bool checkSATCollision (const Entity& other) const;
+    virtual void update();
+    virtual void render();
+    
+    //virtual vector<Vector2D> vertices() const = 0;
+    //bool checkSATCollision (const Entity& other) const;
+    bool checkRecCollision(const Entity& other) const;
     
 private:
-    vector<Vector2D> collisionVertices;
-    SDL_Rect dstRect;
+    //TODO: get rid of SAT check collision and the collisionVertices
+    //vector<Vector2D> collisionVertices;
     SDL_Texture* texture;
-    float rotation;
+    SDL_Rect dstRect;
+    SDL_Rect collisionBox;
 };
 
 #endif /* entity_hpp */

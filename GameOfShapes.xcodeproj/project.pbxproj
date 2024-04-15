@@ -16,7 +16,6 @@
 		04530DF02BBBCF2100CF006C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04530DEF2BBBCF2100CF006C /* main.cpp */; };
 		04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 04530DFC2BBBD6F800CF006C /* yellow_circle.png */; };
 		04530E052BBBE78700CF006C /* Simple Shapes in Resources */ = {isa = PBXBuildFile; fileRef = 04530E042BBBE78700CF006C /* Simple Shapes */; };
-		048B100A2BCAB440006108F1 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 048B10082BCAB440006108F1 /* menu.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +45,10 @@
 		04530E042BBBE78700CF006C /* Simple Shapes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Simple Shapes"; path = "../../../../../../../../Volumes/Data/game/Simple Shapes"; sourceTree = "<group>"; };
 		04530E072BBBECC700CF006C /* vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vector2D.cpp; sourceTree = "<group>"; };
 		04530E082BBBECC700CF006C /* vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector2D.hpp; sourceTree = "<group>"; };
+		04670F192BCBDC4A00E9FD67 /* map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = map.cpp; sourceTree = "<group>"; };
+		04670F1A2BCBDC4A00E9FD67 /* map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = map.hpp; sourceTree = "<group>"; };
+		04670F1D2BCBDC5900E9FD67 /* mouse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mouse.cpp; sourceTree = "<group>"; };
+		04670F1E2BCBDC5900E9FD67 /* mouse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = mouse.hpp; sourceTree = "<group>"; };
 		048B10082BCAB440006108F1 /* menu.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menu.cpp; sourceTree = "<group>"; };
 		048B10092BCAB440006108F1 /* menu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = menu.hpp; sourceTree = "<group>"; };
 		048B100D2BCAEB5E006108F1 /* timer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = timer.cpp; sourceTree = "<group>"; };
@@ -139,6 +142,10 @@
 				048B10092BCAB440006108F1 /* menu.hpp */,
 				048B100D2BCAEB5E006108F1 /* timer.cpp */,
 				048B100E2BCAEB5E006108F1 /* timer.hpp */,
+				04670F192BCBDC4A00E9FD67 /* map.cpp */,
+				04670F1A2BCBDC4A00E9FD67 /* map.hpp */,
+				04670F1D2BCBDC5900E9FD67 /* mouse.cpp */,
+				04670F1E2BCBDC5900E9FD67 /* mouse.hpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -245,7 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				048B100A2BCAB440006108F1 /* menu.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
