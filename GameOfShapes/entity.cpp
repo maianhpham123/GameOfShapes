@@ -28,6 +28,15 @@ SDL_Rect Entity::setDstRect(int x, int y, int width, int height) const {
     return dstRect;
 }
 
+SDL_Rect Entity::setCollisionBox(int x, int y, int width, int height) const {
+    SDL_Rect collisionBox;
+    collisionBox.x = x;
+    collisionBox.y = y;
+    collisionBox.w = width;
+    collisionBox.h = height;
+    return collisionBox;
+}
+
 float Entity::rotate(float Rotation) {
     transform.rotation = Rotation;
     if(transform.rotation > 360.0f)
@@ -43,21 +52,19 @@ void Entity::update() {}
 
 void Entity::render() {}
 
-/*
-vector<Vector2D> Entity::vertices() const {
-    return collisionVertices;
-}
- */
-
-/*
-bool Entity::checkSATCollision (const Entity& other) const {
-    bool isIntersect = Intersect(vertices(), other.vertices());
-    if (isIntersect) return true;
-    return false;
-}
- */
-
 bool Entity::checkRecCollision(const Entity& other) const {
-    if (checkRectangleCollision(collisionBox, other.collisionBox)) return true;
+    SDL_Rect const rect1 = setCollisionBox(0, 0, 0, 0);
+    SDL_Rect const rect2 = other.setCollisionBox(0, 0, 0, 0);
+    //SDL_Rect intersectRect;
+    if (checkRectangleCollision(rect1, rect2)) {
+        //TODO: put this into render function in game.cpp
+        /*
+        if (SDL_IntersectRect(&rect1, &rect2, &intersectRect)) {
+            SDL_SetRenderDrawColor(getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
+            SDL_RenderDrawRect(getRenderer(), &intersectRect);
+        }
+        */
+        return true;
+    }
     return false;
 }

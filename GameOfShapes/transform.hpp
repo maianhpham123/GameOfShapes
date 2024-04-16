@@ -43,7 +43,6 @@ public:
     void translate() {
         position.x += velocity.x * SPEED;
         position.y += velocity.y * SPEED;
-        //cout << "(" << position.x << ", " << position.y << ")" << endl; 
     }
     
     void rotate(float amount) {

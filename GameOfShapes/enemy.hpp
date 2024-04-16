@@ -9,14 +9,15 @@
 #define enemy_hpp
 
 #include "entity.hpp"
-#include <vector>
 
 class Enemy : public Entity {
 public:
     Enemy(RenderWindow& window, const char* textureFile);
     void update() override;
+    void render() override;
+    
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
-    //vector<Vector2D> vertices() const override;
+    SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
     
 private:
 };

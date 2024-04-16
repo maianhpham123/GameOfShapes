@@ -24,6 +24,7 @@ public:
     bool isButtonPressed(int button) const;
     
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
+    virtual SDL_Rect setCollisionBox (int x, int y, int width, int height) const override;
     
     //TODO: get rid of this
     /*

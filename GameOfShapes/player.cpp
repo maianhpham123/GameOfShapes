@@ -28,18 +28,13 @@ SDL_Rect Player::setDstRect(int x, int y, int width, int height) const
     return dstRect;
 }
 
-/*
-vector<Vector2D> Player::vertices() const {
-    vector<Vector2D> playerVertices;
-    float radius = 30.0f;
-    float centerX = (float) (transform.position.x + radius);
-    float centerY = (float) (transform.position.y + radius);
+SDL_Rect Player::setCollisionBox(int x, int y, int width, int height) const
+{
+    SDL_Rect collisionBox;
+    collisionBox.x = transform.position.x;
+    collisionBox.y = transform.position.y;
+    collisionBox.w = 64;
+    collisionBox.h = 64;
     
-    playerVertices.push_back(Vector2D(centerX - radius + 4.0f, centerY - radius + 4.0f));
-    playerVertices.push_back(Vector2D(centerX + radius, centerY - radius + 4.0f));
-    playerVertices.push_back(Vector2D(centerX + radius, centerY + radius));
-    playerVertices.push_back(Vector2D(centerX - radius + 4.0f, centerY + radius));
-    
-    return playerVertices;
+    return collisionBox;
 }
- */

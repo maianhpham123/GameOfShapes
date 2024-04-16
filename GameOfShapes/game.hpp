@@ -35,7 +35,6 @@ private:
     RenderWindow window;
     KeyboardController keyboardController;
     Player player;
-    // Entity platform;
     Enemy enemy;
     Mouse mouse;
     Timer* timer;

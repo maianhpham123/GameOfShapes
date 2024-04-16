@@ -38,6 +38,15 @@ SDL_Rect Mouse::setDstRect(int x, int y, int width, int height) const {
     return dstRect;
 }
 
+SDL_Rect Mouse::setCollisionBox(int x, int y, int width, int height) const {
+    SDL_Rect collisionBox;
+    collisionBox.x = x;
+    collisionBox.y = y;
+    collisionBox.w = width;
+    collisionBox.h = height;
+    return collisionBox;
+}
+
 void Mouse::handleEvents(SDL_Event& event) {
     keyboardController.handleEvents(event, *this);
 }
