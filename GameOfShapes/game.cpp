@@ -14,9 +14,9 @@
 #include "transform.hpp"
 #include "player.cpp"
 #include "enemy.cpp"
-#include "defs.h"
+#include "map.cpp"
 
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()) {
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map() {
     timer = Timer::Instance();
 }
 
@@ -65,6 +65,7 @@ void Game::update() {
     player.update();
     enemy.update();
     mouse.update();
+    map.update();
 }
 
 void Game::render() {
@@ -73,12 +74,35 @@ void Game::render() {
     window.render(enemy);
     enemy.transform.rotate(100 * timer->DeltaTime());
     mouse.render();
+    map.render();
+    if (mouse.checkRecCollision(enemy)) {
+        SDL_Rect rect1 = mouse.setCollisionBox(0, 0, 0, 0);
+        SDL_Rect rect2 = enemy.setCollisionBox(0, 0, 0, 0);
+        SDL_Rect rectIntersect;
+        SDL_IntersectRect(&rect1, &rect2, &rectIntersect);
+        SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawRect(window.getRenderer(), &rectIntersect);
+    }
+    
+    if (mouse.checkRecCollision(map)) {
+        SDL_Rect rect1 = mouse.setCollisionBox(0, 0, 0, 0);
+        SDL_Rect rect2 = map.setCollisionBox(0, 0, 0, 0);
+        SDL_Rect rectIntersect;
+        SDL_IntersectRect(&rect1, &rect2, &rectIntersect);
+        SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
+        SDL_RenderDrawRect(window.getRenderer(), &rectIntersect);
+    }
+    
     window.display();
 }
 
 void Game::checkCollision() {
     if (player.checkRecCollision(enemy)) {
         cerr << "You have collided!" << endl;
+    }
+    
+    if (player.checkRecCollision(map)) {
+        cerr << "You have touched the map!" << endl;
     }
 }
 

@@ -40,10 +40,10 @@ SDL_Rect Mouse::setDstRect(int x, int y, int width, int height) const {
 
 SDL_Rect Mouse::setCollisionBox(int x, int y, int width, int height) const {
     SDL_Rect collisionBox;
-    collisionBox.x = x;
-    collisionBox.y = y;
-    collisionBox.w = width;
-    collisionBox.h = height;
+    collisionBox.x = mouseX - 25;
+    collisionBox.y = mouseY - 25;
+    collisionBox.w = 50;
+    collisionBox.h = 50;
     return collisionBox;
 }
 

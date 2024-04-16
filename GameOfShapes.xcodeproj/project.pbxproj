@@ -132,8 +132,8 @@
 		04530DEE2BBBCF1200CF006C /* src */ = {
 			isa = PBXGroup;
 			children = (
-				04A416362BC12E7200443BF1 /* entity */,
 				04A416352BC12E5400443BF1 /* vector */,
+				04A416362BC12E7200443BF1 /* entity */,
 				04530DEF2BBBCF2100CF006C /* main.cpp */,
 				042044F12BBD1A7C00C205FB /* game.cpp */,
 				042044F22BBD1A7C00C205FB /* game.hpp */,

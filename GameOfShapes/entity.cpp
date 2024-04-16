@@ -56,15 +56,7 @@ bool Entity::checkRecCollision(const Entity& other) const {
     SDL_Rect const rect1 = setCollisionBox(0, 0, 0, 0);
     SDL_Rect const rect2 = other.setCollisionBox(0, 0, 0, 0);
     //SDL_Rect intersectRect;
-    if (checkRectangleCollision(rect1, rect2)) {
-        //TODO: put this into render function in game.cpp
-        /*
-        if (SDL_IntersectRect(&rect1, &rect2, &intersectRect)) {
-            SDL_SetRenderDrawColor(getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
-            SDL_RenderDrawRect(getRenderer(), &intersectRect);
-        }
-        */
+    if (checkRectangleCollision(rect1, rect2))
         return true;
-    }
     return false;
 }

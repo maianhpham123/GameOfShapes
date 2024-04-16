@@ -20,15 +20,14 @@ public:
     ~Map();
     
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
+    virtual SDL_Rect setCollisionBox (int x, int y, int width, int height) const override;
     
     virtual void update() override;
     virtual void render() override;
     
-    SDL_Rect getDstRect() const;
-    int* getTileMap();
-    
-private:
-    
+protected:
+    SDL_Renderer* renderer;
+    SDL_Rect tile[16][10];
     int tileMap[16][10];
 };
 

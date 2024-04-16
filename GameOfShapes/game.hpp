@@ -16,6 +16,7 @@
 #include "mouse.hpp"
 #include "player.hpp"
 #include "enemy.hpp"
+#include "map.hpp"
 
 class Game {
 public:
@@ -37,6 +38,7 @@ private:
     Player player;
     Enemy enemy;
     Mouse mouse;
+    Map map;
     Timer* timer;
     const int FRAME_RATE = 60;
     
