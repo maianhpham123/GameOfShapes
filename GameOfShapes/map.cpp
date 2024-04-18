@@ -73,24 +73,30 @@ void Map::generateMap() {
         for (int y = 0; y < 10; y++) {
             if (tileMap[x][y] == 0) {
                 SDL_Rect collisionBox = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
-                cerr << "position of collisionBox: " << collisionBox.x << " " << collisionBox.y << endl;
+                //cerr << "position of collisionBox: " << collisionBox.x << " " << collisionBox.y << endl;
                 //cerr << "position of box: " << rect.x << "  " << rect.y << endl;
             }
         }
     }
 }
 
-void Map::checkTile(const Entity& entity) {
+bool Map::checkTile(const Entity& entity) {
+    bool isCollided = false;
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 10; y++) {
             if (tileMap[x][y] == 0) {
                 SDL_Rect tileCollisionBox = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
                 SDL_Rect playerCollisionBox = entity.setCollisionBox(0, 0, 0, 0);
                 if (SDL_HasIntersection(&playerCollisionBox, &tileCollisionBox)) {
-                    cerr << "You have touched the map!" << endl;
+                    //cerr << "You have touched the map!" << endl;
+                    isCollided = true;
                 }
-                else cerr << "You in safety zone!" << endl;
+                else {
+                    //cerr << "You in safety zone!" << endl;
+                    isCollided = false;
+                }
             }
         }
     }
+    return isCollided;
 }

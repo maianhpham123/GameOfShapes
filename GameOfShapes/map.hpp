@@ -22,7 +22,7 @@ public:
     virtual SDL_Rect setCollisionBox (int x, int y, int width, int height) const override;
     
     void generateMap();
-    void checkTile(const Entity& entity);
+    bool checkTile(const Entity& entity);
     
     virtual void update() override;
     virtual void render() override;
