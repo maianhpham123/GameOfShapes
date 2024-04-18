@@ -26,14 +26,6 @@ public:
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     virtual SDL_Rect setCollisionBox (int x, int y, int width, int height) const override;
     
-    //TODO: get rid of this
-    /*
-    virtual vector<Vector2D> vertices() const override {
-        vector<Vector2D> _mouse = {};
-        return _mouse;
-    }
-    */
-    
     int getMouseX() const;
     int getMouseY() const;
     

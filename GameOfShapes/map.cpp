@@ -11,6 +11,7 @@ Map::Map() {
     srand(static_cast <unsigned int>(time(NULL)));
     update();
 }
+
 Map::~Map() {}
 
 SDL_Rect Map::setDstRect(int x, int y, int width, int height) const {
@@ -30,7 +31,6 @@ void Map::update() {
         }
     }
     
-    SDL_Rect tile[16][10];
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 10; y++) {
             tile[x][y].x = x * 80;
@@ -43,15 +43,18 @@ void Map::update() {
 
 //TODO: correct this, there's nothing rendered on the screen
 void Map::render() {
-    SDL_SetRenderDrawColor(renderer, 0, 255, 0, 0);
+    /*
+    SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 10; y++) {
-            if (tileMap[x][y] == 1) {
+            if (tileMap[x][y] == 0) {
                 SDL_Rect rect = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
                 SDL_RenderDrawRect(renderer, &rect);
+                //cerr << "position of box: " << rect.x << "  " << rect.y << endl;
             }
         }
     }
+    */
 }
 
 SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
@@ -60,5 +63,34 @@ SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
     collisionBox.y = y;
     collisionBox.w = 80;
     collisionBox.h = 80;
+    //cerr << "position of collisionBox: " << collisionBox.x << " " << collisionBox.y << endl;
+     
     return collisionBox;
+}
+
+void Map::generateMap() {
+    for (int x = 0; x < 16; x++) {
+        for (int y = 0; y < 10; y++) {
+            if (tileMap[x][y] == 0) {
+                SDL_Rect collisionBox = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
+                cerr << "position of collisionBox: " << collisionBox.x << " " << collisionBox.y << endl;
+                //cerr << "position of box: " << rect.x << "  " << rect.y << endl;
+            }
+        }
+    }
+}
+
+void Map::checkTile(const Entity& entity) {
+    for (int x = 0; x < 16; x++) {
+        for (int y = 0; y < 10; y++) {
+            if (tileMap[x][y] == 0) {
+                SDL_Rect tileCollisionBox = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
+                SDL_Rect playerCollisionBox = entity.setCollisionBox(0, 0, 0, 0);
+                if (SDL_HasIntersection(&playerCollisionBox, &tileCollisionBox)) {
+                    cerr << "You have touched the map!" << endl;
+                }
+                else cerr << "You in safety zone!" << endl;
+            }
+        }
+    }
 }

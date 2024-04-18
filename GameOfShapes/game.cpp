@@ -33,6 +33,7 @@ void Game::run() {
     while (isRunning && !gameOver) {
         timer->update();
         if (timer->DeltaTime() >= (1.0f / FRAME_RATE)) {
+            map.generateMap();
             handleEvents();
             update();
             checkCollision();
@@ -83,7 +84,7 @@ void Game::render() {
         SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
         SDL_RenderDrawRect(window.getRenderer(), &rectIntersect);
     }
-    
+
     if (mouse.checkRecCollision(map)) {
         SDL_Rect rect1 = mouse.setCollisionBox(0, 0, 0, 0);
         SDL_Rect rect2 = map.setCollisionBox(0, 0, 0, 0);
@@ -101,9 +102,13 @@ void Game::checkCollision() {
         cerr << "You have collided!" << endl;
     }
     
+    /*
     if (player.checkRecCollision(map)) {
         cerr << "You have touched the map!" << endl;
     }
+     */
+    
+    map.checkTile(player);
 }
 
 void Game::checkGameOver() {

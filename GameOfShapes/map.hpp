@@ -12,7 +12,6 @@
 #include "entity.hpp"
 #include <ctime>
 #include <cstdlib>
-#include <vector>
 
 class Map : public Entity {
 public:
@@ -22,10 +21,13 @@ public:
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     virtual SDL_Rect setCollisionBox (int x, int y, int width, int height) const override;
     
+    void generateMap();
+    void checkTile(const Entity& entity);
+    
     virtual void update() override;
     virtual void render() override;
     
-protected:
+private:
     SDL_Renderer* renderer;
     SDL_Rect tile[16][10];
     int tileMap[16][10];
