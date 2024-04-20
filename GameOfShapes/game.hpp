@@ -17,6 +17,7 @@
 #include "player.hpp"
 #include "enemy.hpp"
 #include "map.hpp"
+#include "bullet.hpp"
 
 class Game {
 public:
@@ -40,6 +41,8 @@ private:
     Mouse mouse;
     Map map;
     Timer* timer;
+    
+    Bullet* bullet;
     const int FRAME_RATE = 60;
     
     bool isRunning;

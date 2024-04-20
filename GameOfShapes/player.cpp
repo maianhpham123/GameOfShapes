@@ -8,7 +8,7 @@
 #include "player.hpp"
 
 Player::Player(RenderWindow& window, const char* textureFile)
-: Entity(Vector2D(100.0f, 100.0f), window.loadTexture(textureFile)) {}
+: Entity(Vector2D(608.0f, 700.0f), window.loadTexture(textureFile)) {}
 
 void Player::handleEvents(SDL_Event& event) {
     keyboardController.handleEvents(event, *this);

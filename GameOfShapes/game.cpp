@@ -15,8 +15,10 @@
 #include "player.cpp"
 #include "enemy.cpp"
 #include "map.cpp"
+#include "bullet.cpp"
 
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer()) {
+//TODO: fix the bullet class
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer()), bullet(window, "yellow_circle.png") {
     timer = Timer::Instance();
     map.update();
 }

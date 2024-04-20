@@ -30,6 +30,7 @@ private:
     SDL_Renderer* renderer;
     SDL_Rect tile[16][10];
     int tileMap[16][10];
+    const int maxObstacles = 10;
 };
 
 #endif /* map_hpp */

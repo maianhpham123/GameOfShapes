@@ -24,11 +24,19 @@ SDL_Rect Map::setDstRect(int x, int y, int width, int height) const {
     return dstRect;
 }
 
-//TODO: make the map right, there is only one box being rendered
 void Map::update() {
+    int countObstacles = 0;
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 10; y++) {
             tileMap[x][y] = rand() % 2;
+        }
+    }
+    
+    for (int x = 0; x < 16; x++) {
+        for (int y = 0; y < 10; y++) {
+            if (tileMap[x][y] == 0 && countObstacles < maxObstacles)
+                countObstacles++;
+            else if (tileMap[x][y] == 0 && countObstacles >= maxObstacles) tileMap[x][y] = 1;
         }
     }
     
@@ -42,11 +50,12 @@ void Map::update() {
     }
 }
 
-//TODO: correct this, there's nothing rendered on the screen
+//TODO: has been modified
 void Map::render() {
+    /* for debugging and seeing the hidden map
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 10; y++) {
+        for (int y = 0; y < 8; y++) {
             if (tileMap[x][y] == 0) {
                 SDL_Rect rect = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
                 SDL_RenderDrawRect(renderer, &rect);
@@ -54,6 +63,7 @@ void Map::render() {
             }
         }
     }
+     */
 }
 
 SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
@@ -70,7 +80,7 @@ SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
 //TODO: modify the checkTile
 bool Map::checkTile(const Entity& entity) {
     for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 10; y++) {
+        for (int y = 0; y < 8; y++) {
             if (tileMap[x][y] == 0) {
                 SDL_Rect tileCollisionBox = setCollisionBox(tile[x][y].x,tile[x][y].y,80,80);
                 SDL_Rect entityCollisionBox = entity.setCollisionBox(0,0,0,0);
