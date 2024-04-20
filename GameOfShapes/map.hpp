@@ -15,13 +15,12 @@
 
 class Map : public Entity {
 public:
-    Map();
+    Map(SDL_Renderer* Renderer);
     ~Map();
     
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     virtual SDL_Rect setCollisionBox (int x, int y, int width, int height) const override;
     
-    void generateMap();
     bool checkTile(const Entity& entity);
     
     virtual void update() override;

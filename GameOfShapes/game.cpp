@@ -16,8 +16,9 @@
 #include "enemy.cpp"
 #include "map.cpp"
 
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map() {
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer()) {
     timer = Timer::Instance();
+    map.update();
 }
 
 
@@ -33,7 +34,6 @@ void Game::run() {
     while (isRunning && !gameOver) {
         timer->update();
         if (timer->DeltaTime() >= (1.0f / FRAME_RATE)) {
-            map.generateMap();
             handleEvents();
             update();
             checkCollision();
@@ -66,7 +66,6 @@ void Game::update() {
     player.update();
     enemy.update();
     mouse.update();
-    map.update();
 }
 
 void Game::render() {
@@ -85,15 +84,8 @@ void Game::render() {
         SDL_RenderDrawRect(window.getRenderer(), &rectIntersect);
     }
     
-    //TODO: fix this tile
-    if (map.checkTile(mouse)) {
-        SDL_Rect rect1 = mouse.setCollisionBox(0, 0, 0, 0);
-        SDL_Rect rect2 = map.setCollisionBox(0, 0, 0, 0);
-        SDL_Rect rectIntersect;
-        SDL_IntersectRect(&rect1, &rect2, &rectIntersect);
-        SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawRect(window.getRenderer(), &rectIntersect);
-    }
+    if (map.checkTile(mouse)) cerr << "Mouse has touched map" << endl;
+    else cerr << "Nothing has been touched!" << endl;
     
     window.display();
 }

@@ -7,7 +7,8 @@
 
 #include "map.hpp"
 
-Map::Map() {
+Map::Map(SDL_Renderer* Renderer) {
+    renderer = Renderer;
     srand(static_cast <unsigned int>(time(NULL)));
     update();
 }
@@ -43,7 +44,6 @@ void Map::update() {
 
 //TODO: correct this, there's nothing rendered on the screen
 void Map::render() {
-    /*
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 10; y++) {
@@ -54,7 +54,6 @@ void Map::render() {
             }
         }
     }
-    */
 }
 
 SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
@@ -68,35 +67,23 @@ SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
     return collisionBox;
 }
 
-void Map::generateMap() {
-    for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 10; y++) {
-            if (tileMap[x][y] == 0) {
-                SDL_Rect collisionBox = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
-                //cerr << "position of collisionBox: " << collisionBox.x << " " << collisionBox.y << endl;
-                //cerr << "position of box: " << rect.x << "  " << rect.y << endl;
-            }
-        }
-    }
-}
-
+//TODO: modify the checkTile
 bool Map::checkTile(const Entity& entity) {
-    bool isCollided = false;
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 10; y++) {
             if (tileMap[x][y] == 0) {
-                SDL_Rect tileCollisionBox = setCollisionBox(tile[x][y].x, tile[x][y].y, 80, 80);
-                SDL_Rect playerCollisionBox = entity.setCollisionBox(0, 0, 0, 0);
-                if (SDL_HasIntersection(&playerCollisionBox, &tileCollisionBox)) {
+                SDL_Rect tileCollisionBox = setCollisionBox(tile[x][y].x,tile[x][y].y,80,80);
+                SDL_Rect entityCollisionBox = entity.setCollisionBox(0,0,0,0);
+                if (SDL_HasIntersection(&tileCollisionBox, &entityCollisionBox)) {
+                    SDL_Rect intersectRect;
+                    SDL_IntersectRect(&tileCollisionBox, &entityCollisionBox, &intersectRect);
+                    SDL_SetRenderDrawColor(renderer, 255, 0, 255, SDL_ALPHA_OPAQUE);
+                    SDL_RenderDrawRect(renderer, &intersectRect);
                     //cerr << "You have touched the map!" << endl;
-                    isCollided = true;
-                }
-                else {
-                    //cerr << "You in safety zone!" << endl;
-                    isCollided = false;
+                    return true;
                 }
             }
         }
     }
-    return isCollided;
+    return false;
 }
