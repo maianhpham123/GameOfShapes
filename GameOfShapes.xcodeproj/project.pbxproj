@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0432AF8E2BD8146D00FC01AC /* enemyAI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0432AF8C2BD8146D00FC01AC /* enemyAI.cpp */; };
 		04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD12BBBCD3500CF006C /* Assets.xcassets */; };
 		04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE42BBBCEAC00CF006C /* SDL2_image.framework */; };
 		04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */; };
@@ -26,6 +27,8 @@
 		042044F22BBD1A7C00C205FB /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		042044F62BBD2EC400C205FB /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		042044F72BBD2EC400C205FB /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		0432AF8C2BD8146D00FC01AC /* enemyAI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enemyAI.cpp; sourceTree = "<group>"; };
+		0432AF8D2BD8146D00FC01AC /* enemyAI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = enemyAI.hpp; sourceTree = "<group>"; };
 		04530DCB2BBBCD3400CF006C /* GameOfShapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfShapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04530DD12BBBCD3500CF006C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04530DD62BBBCD3500CF006C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 				04C2B2792BBF8AAF00273C2D /* enemy.hpp */,
 				0461F6492BD0C118004E6F42 /* bullet.cpp */,
 				0461F64A2BD0C118004E6F42 /* bullet.hpp */,
+				0432AF8C2BD8146D00FC01AC /* enemyAI.cpp */,
+				0432AF8D2BD8146D00FC01AC /* enemyAI.hpp */,
 			);
 			name = characters;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0432AF8E2BD8146D00FC01AC /* enemyAI.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
