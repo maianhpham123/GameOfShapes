@@ -42,6 +42,10 @@ void Bullet::shoot(int mouseX, int mouseY) {
         transform.position.y = playerY;
 }
 
+vector<Bullet*> Bullet::setBulletList () const {
+    return bullet_list;
+}
+
 bool Bullet::isOutOfScreen() {
     const SDL_Rect ScreenSize = {0,0,SCREEN_WIDTH, SCREEN_HEIGHT};
     return ((transform.position.x < 0) || (transform.position.y < 0) || (transform.position.x > ScreenSize.w) || (transform.position.y > ScreenSize.h));

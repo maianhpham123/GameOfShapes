@@ -11,6 +11,7 @@
 #include "entity.hpp"
 #include "timer.hpp"
 #include "maths.hpp"
+#include <vector>
 
 class Bullet : public Entity {
 public:
@@ -21,9 +22,11 @@ public:
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
     void shoot(int mouseX, int mouseY);
+    vector<Bullet*> setBulletList () const;
     bool isOutOfScreen();
 private:
     Vector2D velocity; // Bullet velocity
+    vector<Bullet*> bullet_list;
 };
 
 #endif /* bullet_hpp */

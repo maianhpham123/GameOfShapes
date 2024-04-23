@@ -68,10 +68,11 @@ void Game::handleEvents() {
             player.handleEvents(event);
             mouse.handleEvents(event);
             if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+                
                         int mouseX, mouseY;
                         SDL_GetMouseState(&mouseX, &mouseY);
                         bullet->shoot(mouseX, mouseY);
-                    }
+            }
     }
 }
 
