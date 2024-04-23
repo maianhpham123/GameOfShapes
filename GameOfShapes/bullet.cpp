@@ -7,55 +7,61 @@
 
 #include "bullet.hpp"
 
-Bullet::Bullet(RenderWindow& window, const char* textureFile) : Entity(window.loadTexture(textureFile)) {
-    timer = Timer::Instance();
-    speed = 500.0f;
-    isFired = false;
+Bullet::Bullet(RenderWindow& window, const char* textureFile, Vector2D pos) : Entity(pos, window.loadTexture(textureFile)) {
+    velocity = Vector2D(0.0f, 0.0f);
 }
 
-Bullet::~Bullet() {
-    timer = NULL;
-}
-
-void Bullet::fire(Vector2D pos) {
-    isFired = true;
-    position = pos;
-}
-
-void Bullet::reLoad() {
-    isFired = false;
-}
+Bullet::~Bullet() {}
 
 //TODO: finish this bullet class
 void Bullet::update() {
-    if (isFired) {
-        Vector2D direction = position - transform.position;
-        Vector2D dir = normalise(direction);
-        
-        Vector2D velocity;
-        velocity.x = dir.x * speed * timer->DeltaTime();
-        velocity.y = dir.y * speed * timer->DeltaTime();
-        
-        transform.position += velocity;
-    }
+    transform.position.x += velocity.x;
+    transform.position.y += velocity.y;
 }
 
 void Bullet::render() {}
 
+void Bullet::shoot(int mouseX, int mouseY) {
+    int playerX = transform.position.x;
+    int playerY = transform.position.y;
+        
+    Vector2D dir;
+    dir.x = mouseX - playerX;
+    dir.y = mouseY - playerY;
+    
+    Vector2D normalisedDir = normalise(dir);
+            
+    
+        // Set the bullet's velocity based on the direction vector
+    float bulletSpeed = 5.0f; // Adjust the bullet's speed as needed
+    velocity.x = normalisedDir.x * bulletSpeed;
+    velocity.y = normalisedDir.y * bulletSpeed;
+
+        // Set the bullet's initial position
+        transform.position.x = playerX;
+        transform.position.y = playerY;
+}
+
+bool Bullet::isOutOfScreen() {
+    const SDL_Rect ScreenSize = {0,0,SCREEN_WIDTH, SCREEN_HEIGHT};
+    return ((transform.position.x < 0) || (transform.position.y < 0) || (transform.position.x > ScreenSize.w) || (transform.position.y > ScreenSize.h));
+    
+}
+
 SDL_Rect Bullet::setDstRect(int x, int y, int width, int height) const {
     SDL_Rect dstRect;
-    dstRect.x = transform.position.x - 25;
-    dstRect.y = transform.position.y - 25;
-    dstRect.w = 50;
-    dstRect.h = 50;
+    dstRect.x = transform.position.x - 15;
+    dstRect.y = transform.position.y - 15;
+    dstRect.w = 30;
+    dstRect.h = 30;
     return dstRect;
 }
 
 SDL_Rect Bullet::setCollisionBox(int x, int y, int width, int height) const {
     SDL_Rect collisionBox;
-    collisionBox.x = transform.position.x - 25;
-    collisionBox.y = transform.position.y - 25;
-    collisionBox.w = 50;
-    collisionBox.h = 50;
+    collisionBox.x = transform.position.x - 15;
+    collisionBox.y = transform.position.y - 15;
+    collisionBox.w = 30;
+    collisionBox.h = 30;
     return collisionBox;
 }

@@ -43,6 +43,7 @@ private:
     Timer* timer;
     
     Bullet* bullet;
+    
     const int FRAME_RATE = 60;
     
     bool isRunning;

@@ -14,24 +14,16 @@
 
 class Bullet : public Entity {
 public:
-    Bullet(RenderWindow& window, const char* textureFile);
+    Bullet(RenderWindow& window, const char* textureFile, const Vector2D pos);
     ~Bullet();
-    
-    void fire(Vector2D pos);
-    void reLoad();
-    
     void update() override;
     void render() override;
-    
     SDL_Rect setDstRect(int x, int y, int width, int height) const override;
-    
     SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
-    
+    void shoot(int mouseX, int mouseY);
+    bool isOutOfScreen();
 private:
-    const int OFFSCREEN_BUFFER = 10;
-    Timer* timer;
-    float speed;
-    bool isFired;
+    Vector2D velocity; // Bullet velocity
 };
 
 #endif /* bullet_hpp */

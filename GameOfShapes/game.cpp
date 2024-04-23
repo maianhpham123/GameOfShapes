@@ -17,10 +17,14 @@
 #include "map.cpp"
 #include "bullet.cpp"
 
-//TODO: fix the bullet class
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer()), bullet(window, "yellow_circle.png") {
+
+//TODO: create a vector for bullet, each time of mouse down is a new bullet being released
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer())
+{
     timer = Timer::Instance();
     map.update();
+    
+    bullet = new Bullet(window, "yellow_circle.png", Vector2D(player.transform.position.x + 32, player.transform.position.y + 32));
 }
 
 
@@ -28,6 +32,8 @@ Game::~Game() {
     Timer::Release();
     timer = NULL;
     window.clean();
+    
+    delete bullet;
     SDL_Quit();
 }
 
@@ -61,6 +67,11 @@ void Game::handleEvents() {
         else
             player.handleEvents(event);
             mouse.handleEvents(event);
+            if (event.type == SDL_MOUSEBUTTONDOWN && event.button.button == SDL_BUTTON_LEFT) {
+                        int mouseX, mouseY;
+                        SDL_GetMouseState(&mouseX, &mouseY);
+                        bullet->shoot(mouseX, mouseY);
+                    }
     }
 }
 
@@ -68,18 +79,20 @@ void Game::update() {
     player.update();
     enemy.update();
     mouse.update();
+    bullet->update();
 }
 
 void Game::render() {
     window.clear();
     window.render(player);
     window.render(enemy);
+    window.render(*bullet);
     enemy.transform.rotate(100 * timer->DeltaTime());
     mouse.render();
     map.render();
     if (mouse.checkRecCollision(enemy)) {
         SDL_Rect rect1 = mouse.setCollisionBox(0, 0, 0, 0);
-        SDL_Rect rect2 = enemy.setCollisionBox(0, 0, 0, 0);
+        SDL_Rect rect2 = enemy.setCollisionBox(0, 0, 0,0);
         SDL_Rect rectIntersect;
         SDL_IntersectRect(&rect1, &rect2, &rectIntersect);
         SDL_SetRenderDrawColor(window.getRenderer(), 255, 0, 255, SDL_ALPHA_OPAQUE);
@@ -87,7 +100,7 @@ void Game::render() {
     }
     
     if (map.checkTile(mouse)) cerr << "Mouse has touched map" << endl;
-    else cerr << "Nothing has been touched!" << endl;
+    //else cerr << "Nothing has been touched!" << endl;
     
     window.display();
 }

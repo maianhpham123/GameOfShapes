@@ -52,7 +52,7 @@ void Map::update() {
 
 //TODO: has been modified
 void Map::render() {
-    /* for debugging and seeing the hidden map
+    /* for debugging and seeing the hidden map */
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     for (int x = 0; x < 16; x++) {
         for (int y = 0; y < 8; y++) {
@@ -63,7 +63,7 @@ void Map::render() {
             }
         }
     }
-     */
+    
 }
 
 SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
