@@ -26,7 +26,7 @@ public:
     bool isOutOfScreen();
 private:
     Vector2D velocity; // Bullet velocity
-    vector<Bullet*> bullet_list;
+    vector<Bullet*> bullet_list; //the place to store bullet
 };
 
 #endif /* bullet_hpp */

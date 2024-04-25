@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0432AF8E2BD8146D00FC01AC /* enemyAI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0432AF8C2BD8146D00FC01AC /* enemyAI.cpp */; };
 		04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD12BBBCD3500CF006C /* Assets.xcassets */; };
 		04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE42BBBCEAC00CF006C /* SDL2_image.framework */; };
 		04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */; };
@@ -261,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0432AF8E2BD8146D00FC01AC /* enemyAI.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

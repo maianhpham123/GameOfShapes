@@ -26,10 +26,17 @@ public:
     virtual void update() override;
     virtual void render() override;
     
+    int getRows();
+    int getCols();
+    
+    Vector2D worldToTile(const Vector2D& worldPosition) const;
+    int getTileValue(int row, int col) const;
+    void setTileValue(int row, int col, int value);
+    
 private:
     SDL_Renderer* renderer;
-    SDL_Rect tile[16][10];
-    int tileMap[16][10];
+    SDL_Rect tile[10][16];
+    int tileMap[10][16];
     const int maxObstacles = 10;
 };
 

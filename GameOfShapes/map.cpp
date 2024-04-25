@@ -26,22 +26,23 @@ SDL_Rect Map::setDstRect(int x, int y, int width, int height) const {
 
 void Map::update() {
     int countObstacles = 0;
-    for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 10; y++) {
+    for (int x = 0; x < 10; x++) {
+        for (int y = 0; y < 16; y++) {
             tileMap[x][y] = rand() % 2;
         }
     }
     
-    for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 10; y++) {
+    //TODO: Modify the map (after finishing the bullet and AI_Enemy class
+    for (int x = 0; x < 10; x++) {
+        for (int y = 0; y < 16; y++) {
             if (tileMap[x][y] == 0 && countObstacles < maxObstacles)
                 countObstacles++;
             else if (tileMap[x][y] == 0 && countObstacles >= maxObstacles) tileMap[x][y] = 1;
         }
     }
     
-    for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 10; y++) {
+    for (int x = 0; x < 10; x++) {
+        for (int y = 0; y < 16; y++) {
             tile[x][y].x = x * 80;
             tile[x][y].y = y * 80;
             tile[x][y].w = 80;
@@ -79,8 +80,8 @@ SDL_Rect Map::setCollisionBox(int x, int y, int width, int height) const {
 
 //TODO: modify the checkTile
 bool Map::checkTile(const Entity& entity) {
-    for (int x = 0; x < 16; x++) {
-        for (int y = 0; y < 8; y++) {
+    for (int x = 0; x < 8; x++) {
+        for (int y = 0; y < 16; y++) {
             if (tileMap[x][y] == 0) {
                 SDL_Rect tileCollisionBox = setCollisionBox(tile[x][y].x,tile[x][y].y,80,80);
                 SDL_Rect entityCollisionBox = entity.setCollisionBox(0,0,0,0);
@@ -97,3 +98,39 @@ bool Map::checkTile(const Entity& entity) {
     }
     return false;
 }
+
+int Map::getRows() {
+    return 10;
+}
+
+int Map::getCols() {
+    return 16;
+}
+
+Vector2D Map::worldToTile(const Vector2D& worldPosition) const {
+    // Calculate tile position based on world position and tile size
+    const float tileSize = 80.0f; // Replace with your actual tile size
+    int tileX = static_cast<int>(worldPosition.x / tileSize);
+    int tileY = static_cast<int>(worldPosition.y / tileSize);
+    return Vector2D(tileX, tileY);
+}
+
+int Map::getTileValue(int row, int col) const {
+    if (row >= 0 && row < 10 && col >= 0 && col < 16) {
+        return tileMap[row][col];
+    }
+
+    // Handle invalid indices or out-of-bounds access
+    // You can throw an exception, return a default value, or handle it based on your requirements.
+    // Here, we return -1 to indicate an invalid or out-of-bounds access.
+    return -1;
+}
+
+void Map::setTileValue(int row, int col, int value) {
+    if (row >= 0 && row < 10 && col >= 0 && col < 16) {
+        tileMap[row][col] = value;
+    }
+    // Handle invalid indices or out-of-bounds access if needed
+}
+
+

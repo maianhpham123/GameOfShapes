@@ -16,9 +16,10 @@
 #include "enemy.cpp"
 #include "map.cpp"
 #include "bullet.cpp"
-
+#include "enemyAI.cpp"
 
 //TODO: create a vector for bullet, each time of mouse down is a new bullet being released
+//problem: the bullet has been initialised first
 Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer())
 {
     timer = Timer::Instance();
