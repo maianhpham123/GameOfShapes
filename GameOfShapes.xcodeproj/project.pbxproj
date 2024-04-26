@@ -16,6 +16,7 @@
 		04530DF02BBBCF2100CF006C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04530DEF2BBBCF2100CF006C /* main.cpp */; };
 		04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 04530DFC2BBBD6F800CF006C /* yellow_circle.png */; };
 		04530E052BBBE78700CF006C /* Simple Shapes in Resources */ = {isa = PBXBuildFile; fileRef = 04530E042BBBE78700CF006C /* Simple Shapes */; };
+		04AF01A02BDA5C6E005F6725 /* red_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 04AF019F2BDA5C6E005F6725 /* red_circle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		048B100E2BCAEB5E006108F1 /* timer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = timer.hpp; sourceTree = "<group>"; };
 		04945EDB2BC9AF7700A40CD2 /* maths.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = maths.hpp; sourceTree = "<group>"; };
 		04945EE22BC9C0BC00A40CD2 /* checkCollision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = checkCollision.hpp; sourceTree = "<group>"; };
+		04AF019F2BDA5C6E005F6725 /* red_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red_circle.png; path = ../../../../../../Downloads/red_circle.png; sourceTree = "<group>"; };
 		04C2B2782BBF8AAF00273C2D /* enemy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enemy.cpp; sourceTree = "<group>"; };
 		04C2B2792BBF8AAF00273C2D /* enemy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = enemy.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,8 +101,9 @@
 			children = (
 				04530DCD2BBBCD3400CF006C /* GameOfShapes */,
 				04530DCC2BBBCD3400CF006C /* Products */,
-				04530E042BBBE78700CF006C /* Simple Shapes */,
+				04AF019F2BDA5C6E005F6725 /* red_circle.png */,
 				04530DFC2BBBD6F800CF006C /* yellow_circle.png */,
+				04530E042BBBE78700CF006C /* Simple Shapes */,
 				04530DE32BBBCEAC00CF006C /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */,
+				04AF01A02BDA5C6E005F6725 /* red_circle.png in Resources */,
 				04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */,
 				04530E052BBBE78700CF006C /* Simple Shapes in Resources */,
 			);

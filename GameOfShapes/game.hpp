@@ -41,9 +41,9 @@ private:
     Enemy enemy;
     Mouse mouse;
     Map map;
-    //AIEnemy aienemy;
     Timer* timer;
     
+    AIEnemy* aienemy;
     Bullet* bullet;
     
     const int FRAME_RATE = 60;

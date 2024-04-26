@@ -9,9 +9,11 @@
 
 //TODO: fix the enemyAI class
 AIEnemy::AIEnemy(RenderWindow& window, const char* textureFile)
-: Entity(Vector2D(SCREEN_WIDTH, SCREEN_HEIGHT),window.loadTexture(textureFile)) {}
+: Entity(Vector2D(1280.0f, 0.0f),window.loadTexture(textureFile)) {}
 
-void AIEnemy::update(Map& map, const Vector2D& playerPosition) {
+//TODO: rewrite this using Djikstra algorithm
+/*
+void AIEnemy::update(Map& map, Vector2D& playerPosition) {
     calculateShortestPath(map, playerPosition);
     
     if (!shortestPath.empty()) {
@@ -22,10 +24,10 @@ void AIEnemy::update(Map& map, const Vector2D& playerPosition) {
 }
 
 void AIEnemy::calculateShortestPath(Map& map, const Vector2D& playerPosition) {
-    const int rows = map.getRows();
-    const int cols = map.getCols();
+    const int rows = map.getRows(); //10
+    const int cols = map.getCols(); //16
     
-    std::vector<std::vector<int>> distance(rows, std::vector<int>(cols, INT_MAX));
+    vector<vector<int>> distance(rows, vector<int>(cols, INT_MAX));
     std::unordered_map<int, Vector2D> previous;
     
     std::queue<Node> queue;
@@ -55,7 +57,7 @@ void AIEnemy::calculateShortestPath(Map& map, const Vector2D& playerPosition) {
         }
         
         // Get the neighbors of the current node
-        std::vector<Vector2D> neighbors = getNeighbors(current.x, current.y, map);
+        vector<Vector2D> neighbors = getNeighbors(current.x, current.y, map);
         
         for (const Vector2D& neighbor : neighbors) {
             int neighborX = static_cast<int>(neighbor.x);
@@ -104,4 +106,23 @@ Vector2D AIEnemy::tileToWorld(const Vector2D& tilePosition, const Map& map) cons
     float worldX = tilePosition.x * tileSize;
     float worldY = tilePosition.y * tileSize;
     return Vector2D(worldX, worldY);
+}
+ */
+
+SDL_Rect AIEnemy::setDstRect(int x, int y, int width, int height) const {
+    SDL_Rect dstRect;
+    dstRect.x = transform.position.x - 20;
+    dstRect.y = transform.position.y - 20;
+    dstRect.w = 40;
+    dstRect.h = 40;
+    return dstRect;
+}
+
+SDL_Rect AIEnemy::setCollisionBox(int x, int y, int width, int height) const {
+    SDL_Rect collisionBox;
+    collisionBox.x = transform.position.x - 20;
+    collisionBox.y = transform.position.y - 20;
+    collisionBox.w = 40;
+    collisionBox.h = 40;
+    return collisionBox;
 }

@@ -25,7 +25,9 @@ Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Sim
     timer = Timer::Instance();
     map.update();
     
+    //TODO: rewrite the constructor for this
     bullet = new Bullet(window, "yellow_circle.png", Vector2D(player.transform.position.x + 32, player.transform.position.y + 32));
+    aienemy = new AIEnemy(window, "red_circle.png");
 }
 
 
@@ -35,6 +37,8 @@ Game::~Game() {
     window.clean();
     
     delete bullet;
+    delete aienemy;
+    aienemy = NULL;
     SDL_Quit();
 }
 
@@ -88,7 +92,10 @@ void Game::render() {
     window.clear();
     window.render(player);
     window.render(enemy);
+    
+    window.render(*aienemy);
     window.render(*bullet);
+    
     enemy.transform.rotate(100 * timer->DeltaTime());
     mouse.render();
     map.render();
