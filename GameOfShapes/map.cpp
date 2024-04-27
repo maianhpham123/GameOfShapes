@@ -99,38 +99,4 @@ bool Map::checkTile(const Entity& entity) {
     return false;
 }
 
-int Map::getRows() {
-    return 10;
-}
-
-int Map::getCols() {
-    return 16;
-}
-
-Vector2D Map::worldToTile(const Vector2D& worldPosition) const {
-    // Calculate tile position based on world position and tile size
-    const float tileSize = 80.0f; // Replace with your actual tile size
-    int tileX = static_cast<int>(worldPosition.x / tileSize);
-    int tileY = static_cast<int>(worldPosition.y / tileSize);
-    return Vector2D(tileX, tileY);
-}
-
-int Map::getTileValue(int row, int col) const {
-    if (row >= 0 && row < 10 && col >= 0 && col < 16) {
-        return tileMap[row][col];
-    }
-
-    // Handle invalid indices or out-of-bounds access
-    // You can throw an exception, return a default value, or handle it based on your requirements.
-    // Here, we return -1 to indicate an invalid or out-of-bounds access.
-    return -1;
-}
-
-void Map::setTileValue(int row, int col, int value) {
-    if (row >= 0 && row < 10 && col >= 0 && col < 16) {
-        tileMap[row][col] = value;
-    }
-    // Handle invalid indices or out-of-bounds access if needed
-}
-
 
