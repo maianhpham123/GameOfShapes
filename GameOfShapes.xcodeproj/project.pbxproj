@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04323C292BDD9A89003D900C /* pathfinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04323C272BDD9A89003D900C /* pathfinding.cpp */; };
 		04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD12BBBCD3500CF006C /* Assets.xcassets */; };
 		04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE42BBBCEAC00CF006C /* SDL2_image.framework */; };
 		04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */; };
@@ -27,6 +28,9 @@
 		042044F22BBD1A7C00C205FB /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
 		042044F62BBD2EC400C205FB /* player.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
 		042044F72BBD2EC400C205FB /* player.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = player.hpp; sourceTree = "<group>"; };
+		04323C272BDD9A89003D900C /* pathfinding.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = pathfinding.cpp; sourceTree = "<group>"; };
+		04323C282BDD9A89003D900C /* pathfinding.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = pathfinding.hpp; sourceTree = "<group>"; };
+		04323C2C2BDD9ABB003D900C /* searchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
 		0432AF8C2BD8146D00FC01AC /* enemyAI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enemyAI.cpp; sourceTree = "<group>"; };
 		0432AF8D2BD8146D00FC01AC /* enemyAI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = enemyAI.hpp; sourceTree = "<group>"; };
 		04530DCB2BBBCD3400CF006C /* GameOfShapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfShapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +100,16 @@
 			name = characters;
 			sourceTree = "<group>";
 		};
+		04323C2B2BDD9A90003D900C /* algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				04323C272BDD9A89003D900C /* pathfinding.cpp */,
+				04323C282BDD9A89003D900C /* pathfinding.hpp */,
+				04323C2C2BDD9ABB003D900C /* searchCell.h */,
+			);
+			name = algorithm;
+			sourceTree = "<group>";
+		};
 		04530DC22BBBCD3400CF006C = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +157,7 @@
 		04530DEE2BBBCF1200CF006C /* src */ = {
 			isa = PBXGroup;
 			children = (
+				04323C2B2BDD9A90003D900C /* algorithm */,
 				04A416352BC12E5400443BF1 /* vector */,
 				04A416362BC12E7200443BF1 /* entity */,
 				04530DEF2BBBCF2100CF006C /* main.cpp */,
@@ -264,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04323C292BDD9A89003D900C /* pathfinding.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,9 +65,12 @@ function A_Star(start, goal, h)
 
 
 
-
 void AIEnemy::update() {}
 void AIEnemy::render() {}
+
+void AIEnemy::pathfinding(const Map& map) {
+    
+}
 
 SDL_Rect AIEnemy::setDstRect(int x, int y, int width, int height) const {
     SDL_Rect dstRect;
