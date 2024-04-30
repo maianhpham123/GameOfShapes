@@ -13,6 +13,7 @@
 #include "map.hpp"
 #include <math.h>
 #include "vector2D.hpp"
+#include "pathfinding.hpp"
 
 class AIEnemy : public Entity {
 public:
@@ -23,9 +24,8 @@ public:
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     virtual SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
     
-    void pathfinding(const Map& map);
 private:
-    
+    PathFinding pathfinding;
 };
 
 #endif /* enemyAI_hpp */

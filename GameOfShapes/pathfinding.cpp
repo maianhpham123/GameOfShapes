@@ -33,13 +33,13 @@ void PathFinding::findPath(Vector2D& currentPos, Vector2D& targetPos) {
         
         //initialise start
         SearchCell start;
-        start.position.x = currentPos.x;
-        start.position.y = currentPos.y;
+        start.x = currentPos.x;
+        start.y = currentPos.y;
         
         //initialise goal
         SearchCell goal;
-        goal.position.x = targetPos.x;
-        goal.position.y = targetPos.y;
+        goal.x = targetPos.x;
+        goal.y = targetPos.y;
         
         setStartAndGoal(start, goal);
         initialisedStartGoal = true;
@@ -51,8 +51,8 @@ void PathFinding::findPath(Vector2D& currentPos, Vector2D& targetPos) {
 }
 
 void PathFinding::setStartAndGoal(SearchCell& start, SearchCell& goal) {
-    startCell = new SearchCell (start.position, NULL);
-    goalCell = new SearchCell (goal.position, &goal);
+    startCell = new SearchCell (start.x, start.y, NULL);
+    goalCell = new SearchCell (goal.x, goal.y, &goal);
     
     startCell->g = 0;
     startCell->h = startCell->getDistance(goalCell);
@@ -82,15 +82,22 @@ SearchCell* PathFinding::getNextCell() {
     return nextCell;
 }
 
-void PathFinding::pathOpened(Vector2D& position, float newCost, SearchCell* parent) {
-    int id = position.y * WORLD_SIZE + position.x;
+void PathFinding::pathOpened(int X, int Y, float newCost, SearchCell* parent) {
+    
+    /*
+    if (isCellBlocked) {
+        return;
+    }
+     */
+    
+    int id = Y * WORLD_SIZE + X;
     for (int i = 0; i < visitedList.size(); i++) {
         if (id == visitedList[i]->id) {
             return;
         }
     }
     
-    SearchCell* newChild = new SearchCell(position, parent);
+    SearchCell* newChild = new SearchCell(X, Y, parent);
     newChild->g = newCost;
     newChild->h = parent->getDistance(goalCell);
     
@@ -103,12 +110,13 @@ void PathFinding::pathOpened(Vector2D& position, float newCost, SearchCell* pare
                 openList[i]->parent = newChild;
             }
             
-            else //if the F is not better {
+            //if the F is not better
+            else {
                 delete newChild;
                 return;
+            }
         }
     }
-    
     openList.push_back(newChild);
 }
 
@@ -124,7 +132,7 @@ void PathFinding::ContinuePath() {
         SearchCell* getPath;
         
         for (getPath = goalCell; getPath != NULL; getPath = getPath->parent) {
-            pathToGoal.push_back(new Vector2D(getPath->position));
+            pathToGoal.push_back(new Vector2D(getPath->x, getPath->y));
         }
         
         foundGoal = true;
@@ -134,13 +142,43 @@ void PathFinding::ContinuePath() {
     //TODO: finish the function
     else {
         //rightSide
-        pathOpened(<#Vector2D &position#>, <#float newCost#>, <#SearchCell *parent#>);
+        pathOpened(currentCell->x + 1, currentCell->y, currentCell->g + 1, currentCell);
         //leftSide
+        pathOpened(currentCell->x - 1, currentCell->y, currentCell->g + 1, currentCell);
         //up
+        pathOpened(currentCell->x, currentCell->y - 1, currentCell->g + 1, currentCell);
         //down
+        pathOpened(currentCell->x, currentCell->y + 1, currentCell->g + 1, currentCell);
         //left-up diagonal
+        pathOpened(currentCell->x - 1, currentCell->y - 1, currentCell->g + 1.414f, currentCell);
         //right-up diagonal
+        pathOpened(currentCell->x + 1, currentCell->y - 1, currentCell->g + 1.414f, currentCell);
         //left-down diagonal
+        pathOpened(currentCell->x - 1, currentCell->y + 1, currentCell->g + 1.414f, currentCell);
         //right-down diagonal
+        pathOpened(currentCell->x + 1, currentCell->y + 1, currentCell->g + 1.414f, currentCell);
+        
+        for (int i = 0; i < openList.size(); i++) {
+            if (currentCell->id == openList[i]->id) {
+                openList.erase(openList.begin() + i);
+            }
+        }
     }
+}
+
+Vector2D PathFinding::nextPathPosition() {
+    int index = 1;
+    Vector2D nextPos;
+    nextPos.x = pathToGoal[pathToGoal.size() - index]->x;
+    nextPos.y = pathToGoal[pathToGoal.size() - index]->y;
+
+    Vector2D distance = nextPos - pos;
+
+    if (index < pathToGoal.size()) {
+        if (length(distance) < radius) {
+            pathToGoal.erase(pathToGoal.end() - index);
+        }
+    }
+
+    return nextPos;
 }

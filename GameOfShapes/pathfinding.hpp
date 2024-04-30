@@ -12,6 +12,7 @@
 #include "vector2D.hpp"
 #include <vector>
 #include "searchCell.h"
+#include "maths.hpp"
 
 class PathFinding {
 public:
@@ -36,7 +37,7 @@ public:
     
 private:
     void setStartAndGoal (SearchCell& start, SearchCell& goal);
-    void pathOpened (Vector2D& position, float newCost, SearchCell* parent);
+    void pathOpened (int X, int Y, float newCost, SearchCell* parent);
     SearchCell* getNextCell();
     void ContinuePath();
     
