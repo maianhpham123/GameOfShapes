@@ -84,11 +84,10 @@ SearchCell* PathFinding::getNextCell() {
 
 void PathFinding::pathOpened(int X, int Y, float newCost, SearchCell* parent) {
     
-    /*
-    if (isCellBlocked) {
-        return;
-    }
-     */
+    
+    //if (isCellBlocked) {
+    //    return;
+    //}
     
     int id = Y * WORLD_SIZE + X;
     for (int i = 0; i < visitedList.size(); i++) {
@@ -139,7 +138,6 @@ void PathFinding::ContinuePath() {
         return;
     }
     
-    //TODO: finish the function
     else {
         //rightSide
         pathOpened(currentCell->x + 1, currentCell->y, currentCell->g + 1, currentCell);
@@ -167,18 +165,22 @@ void PathFinding::ContinuePath() {
 }
 
 Vector2D PathFinding::nextPathPosition() {
-    int index = 1;
+    static int index = 1;
     Vector2D nextPos;
-    nextPos.x = pathToGoal[pathToGoal.size() - index]->x;
-    nextPos.y = pathToGoal[pathToGoal.size() - index]->y;
-
-    Vector2D distance = nextPos - pos;
-
-    if (index < pathToGoal.size()) {
-        if (length(distance) < radius) {
-            pathToGoal.erase(pathToGoal.end() - index);
+    if (!pathToGoal.empty()) {
+        if (index <= pathToGoal.size()) {
+            nextPos.x = pathToGoal[pathToGoal.size() - index]->x;
+            nextPos.y = pathToGoal[pathToGoal.size() - index]->y;
+            index++;
+        }
+        else {
+            // Handle the case when index is greater than the size of pathToGoal
+            // For example, you can set nextPos to a default value or return an invalid position.
+            // This depends on the behavior you want in this case.
+            nextPos = Vector2D(-1.0f, -1.0f);
         }
     }
-
+    cout << "Next Position: " << nextPos.x << ", " << nextPos.y << endl;
     return nextPos;
 }
+ 

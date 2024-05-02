@@ -86,6 +86,7 @@ void Game::update() {
     enemy.update();
     mouse.update();
     bullet->update();
+    aienemy->enemyUpdate(player);
 }
 
 void Game::render() {
@@ -99,6 +100,7 @@ void Game::render() {
     enemy.transform.rotate(100 * timer->DeltaTime());
     mouse.render();
     map.render();
+    
     if (mouse.checkRecCollision(enemy)) {
         SDL_Rect rect1 = mouse.setCollisionBox(0, 0, 0, 0);
         SDL_Rect rect2 = enemy.setCollisionBox(0, 0, 0,0);

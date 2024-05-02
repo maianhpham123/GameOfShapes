@@ -14,13 +14,18 @@
 #include <math.h>
 #include "vector2D.hpp"
 #include "pathfinding.hpp"
+#include "maths.hpp"
 
 class AIEnemy : public Entity {
 public:
     AIEnemy(RenderWindow& window, const char* textureFile);
+    Vector2D getPosition();
     
-    virtual void update() override;
-    virtual void render() override;
+    void enemyUpdate (const Entity& entity);
+    
+    virtual void update() override {}
+    virtual void render() override {}
+    
     virtual SDL_Rect setDstRect(int x, int y, int width, int height) const override;
     virtual SDL_Rect setCollisionBox(int x, int y, int width, int height) const override;
     

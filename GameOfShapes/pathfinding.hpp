@@ -14,6 +14,7 @@
 #include "searchCell.h"
 #include "maths.hpp"
 
+
 class PathFinding {
 public:
     PathFinding();
@@ -46,6 +47,9 @@ private:
     vector<SearchCell*> openList;
     vector<SearchCell*> visitedList;
     vector<Vector2D*> pathToGoal;
+    
+    Vector2D currentPos; //current position of the AI enemy
+    int radius = 32;
 };
 
 #endif /* pathfinding_hpp */

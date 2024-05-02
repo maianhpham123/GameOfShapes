@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0423B8EE2BE093F20085D8B2 /* pathfinding.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04323C272BDD9A89003D900C /* pathfinding.cpp */; };
 		04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD12BBBCD3500CF006C /* Assets.xcassets */; };
 		04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE42BBBCEAC00CF006C /* SDL2_image.framework */; };
 		04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */; };
@@ -279,7 +278,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0423B8EE2BE093F20085D8B2 /* pathfinding.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
