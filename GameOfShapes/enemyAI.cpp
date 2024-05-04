@@ -24,7 +24,13 @@ void AIEnemy::enemyUpdate(const Entity& entity) {
     
     pathfinding.findPath(currentPos, targetPos);
     
-    Vector2D nextPos = pathfinding.nextPathPosition();
+    //TODO: update the eneny's position
+    Vector2D nextPos = pathfinding.nextPathPosition(*this);
+    cerr << "Enemy position: " << this->transform.position.x << ", " << this->transform.position.y << endl;
+    
+    //debug
+    //TODO: wrong
+    //cerr << "Next Position: " << nextPos.x << ", " << nextPos.y << endl;
     
     //update the AI's movement towards next Position
     Vector2D direction = normalise(nextPos - currentPos);
@@ -34,6 +40,12 @@ void AIEnemy::enemyUpdate(const Entity& entity) {
     velocity.x = direction.x * speed;
     velocity.y = direction.y * speed;
     Vector2D newPosition = currentPos + velocity;
+        
+        // Check if the AI has reached the target position
+        if (newPosition.x == targetPos.x && newPosition.y == targetPos.y) {
+            // AI has reached the target position, do something
+            //TODO: handle collision
+        }
 }
 
 SDL_Rect AIEnemy::setDstRect(int x, int y, int width, int height) const {

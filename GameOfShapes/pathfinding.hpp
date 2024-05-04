@@ -21,7 +21,7 @@ public:
     ~PathFinding();
     
     void findPath(Vector2D& currentPos, Vector2D& targetPos);
-    Vector2D nextPathPosition();
+    Vector2D nextPathPosition(const Entity& entity);
     
     void ClearOpenList() {
         openList.clear();

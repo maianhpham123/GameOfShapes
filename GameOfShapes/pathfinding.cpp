@@ -10,6 +10,9 @@
 PathFinding::PathFinding() {
     initialisedStartGoal = false;
     foundGoal = false;
+    
+    startCell = NULL;
+    goalCell = NULL;
 }
 
 PathFinding::~PathFinding() {}
@@ -43,6 +46,10 @@ void PathFinding::findPath(Vector2D& currentPos, Vector2D& targetPos) {
         
         setStartAndGoal(start, goal);
         initialisedStartGoal = true;
+        
+        //debug: done!
+        //cerr << "Start position: " << start.x << ", " << start.y << endl;
+        //cerr << "End position: " << goal.x << ", " << goal.y << endl;
     }
     
     if (initialisedStartGoal) {
@@ -54,11 +61,19 @@ void PathFinding::setStartAndGoal(SearchCell& start, SearchCell& goal) {
     startCell = new SearchCell (start.x, start.y, NULL);
     goalCell = new SearchCell (goal.x, goal.y, &goal);
     
+    //debug: done
+    //cerr << "Start id: " << startCell->id << endl;
+    //cerr << "Goal id: " << goalCell->id << endl;
+    
     startCell->g = 0;
     startCell->h = startCell->getDistance(goalCell);
-    startCell->parent = 0;
+    startCell->parent = NULL;
     
     openList.push_back(startCell);
+    
+    //debug: done
+    //cerr << "Start Cell: " << start.x << ", " << start.y << endl;
+    //cerr << "Goal Cell: " << goal.x << ", " << goal.y << endl;
 }
 
 SearchCell* PathFinding::getNextCell() {
@@ -79,19 +94,32 @@ SearchCell* PathFinding::getNextCell() {
         openList.erase(openList.begin() + cellIndex);
     }
     
+    //debug: done
+    //cerr << "Next Cell: " << nextCell->x << ", " << nextCell->y << endl;
+    //cerr << "Next cell's id: " << nextCell->id << endl;
+    
     return nextCell;
 }
 
 void PathFinding::pathOpened(int X, int Y, float newCost, SearchCell* parent) {
     
     
-    //if (isCellBlocked) {
-    //    return;
-    //}
+    //TODO: make it avoid the obstacles in map
+    /*
+    if (isCellBlocked) {
+        return;
+    }
+     */
     
-    int id = Y * WORLD_SIZE + X;
+    int id = Y * WORLD_WIDTH + X;
     for (int i = 0; i < visitedList.size(); i++) {
+        
+        //debug: done
+        //cerr << "Visited: " << visitedList[i]->x << ", " << visitedList[i]->y << endl;
+        
         if (id == visitedList[i]->id) {
+            //debug: done
+            //cerr << "id: " << id << endl;
             return;
         }
     }
@@ -102,6 +130,9 @@ void PathFinding::pathOpened(int X, int Y, float newCost, SearchCell* parent) {
     
     for (int i = 0; i < openList.size(); i++) {
         if (id == openList[i]->id) {
+            //debug: done
+            //cerr << "id: " << id << endl;
+            
             float newF = newChild->g + newCost + openList[i]->h;
             
             if (openList[i]->getf() > newF) {
@@ -117,6 +148,11 @@ void PathFinding::pathOpened(int X, int Y, float newCost, SearchCell* parent) {
         }
     }
     openList.push_back(newChild);
+    
+    //debug: done
+    //cerr << "cost: " << newCost << endl;
+    //cerr << "heuristics: " << newChild ->h << endl;
+    //cerr << endl;
 }
 
 
@@ -126,12 +162,35 @@ void PathFinding::ContinuePath() {
     }
     
     SearchCell* currentCell = getNextCell();
+    //debug: done
+    //cerr << "Cell: " << currentCell->x << ", " << currentCell->y << endl;
+    
+    //debug: done
+    //cerr << "Current cell id: " << currentCell->id << endl;
+    //cerr << "Goal cell id: " << goalCell->id << endl;
+    //cout << endl;
+    //cerr << "Current cell coords: " << currentCell->x << ", " << currentCell->y << endl;
+    //cerr << "Goal cell coords: " << goalCell->x << ", " << goalCell->y << endl;
+    //cout << endl;
+    
     if (currentCell->id == goalCell->id) {
+        //debug
+        //cerr << "id: " << currentCell->id << endl;
+        
         goalCell->parent = currentCell->parent;
         SearchCell* getPath;
         
         for (getPath = goalCell; getPath != NULL; getPath = getPath->parent) {
+            if (getPath == NULL) {
+                cerr << "Error: getPath is NULL" << endl;
+                break;
+            }
+            
             pathToGoal.push_back(new Vector2D(getPath->x, getPath->y));
+            
+            //debug
+            //TODO: it works
+            //cerr << "Next path: " << getPath->x << ", " << getPath->y << endl;
         }
         
         foundGoal = true;
@@ -164,23 +223,39 @@ void PathFinding::ContinuePath() {
     }
 }
 
-Vector2D PathFinding::nextPathPosition() {
-    static int index = 1;
+Vector2D PathFinding::nextPathPosition(const Entity& entity) {
+    int index = 1;
+    
     Vector2D nextPos;
+    
     if (!pathToGoal.empty()) {
-        if (index <= pathToGoal.size()) {
-            nextPos.x = pathToGoal[pathToGoal.size() - index]->x;
-            nextPos.y = pathToGoal[pathToGoal.size() - index]->y;
-            index++;
-        }
-        else {
-            // Handle the case when index is greater than the size of pathToGoal
-            // For example, you can set nextPos to a default value or return an invalid position.
-            // This depends on the behavior you want in this case.
-            nextPos = Vector2D(-1.0f, -1.0f);
-        }
-    }
-    cout << "Next Position: " << nextPos.x << ", " << nextPos.y << endl;
+         if (index <= pathToGoal.size()) {
+             nextPos.x = pathToGoal[pathToGoal.size() - index]->x;
+             nextPos.y = pathToGoal[pathToGoal.size() - index]->y;
+             index++;
+             
+             // Debug
+             //cerr << "Path position: " << nextPos.x << ", " << nextPos.y << endl;
+         }
+         else {
+             cerr << "Index out of range: " << index << endl;
+         }
+     }
+    
+     else {
+         cerr << "No path available!" << endl;
+     }
+     
+    Vector2D distance = nextPos - entity.transform.position;
+    //cerr << "Distance: " << distance.x << ", " << distance.y << endl;
+     
+     if (index < pathToGoal.size()) {
+         if (length(distance) < radius) {
+             pathToGoal.erase(pathToGoal.end() - index);
+         }
+     }
+    
+    //cerr << "Path position: " << nextPos.x << ", " << nextPos.y << endl;
     return nextPos;
 }
  

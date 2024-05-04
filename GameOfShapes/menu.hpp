@@ -8,6 +8,18 @@
 #ifndef menu_hpp
 #define menu_hpp
 
-#include <stdio.h>
+#include "defs.h"
+#include "renderWindow.hpp"
+#include "keyboardController.hpp"
+
+class Menu {
+public:
+    Menu(RenderWindow& renderer, KeyboardController& keyboardController);
+    void run();
+
+private:
+    RenderWindow& renderer;
+    KeyboardController& keyboardController;
+};
 
 #endif /* menu_hpp */

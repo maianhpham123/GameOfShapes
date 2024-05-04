@@ -122,7 +122,7 @@ void Game::checkCollision() {
     }
     
     if (map.checkTile(player)) cerr << "You have touched the map!" << endl;
-    else cerr << "You in safety zone!" << endl;
+    //else cerr << "You in safety zone!" << endl;
 }
 
 void Game::checkGameOver() {
@@ -141,7 +141,7 @@ void Game::checkGameOver() {
             playerX + entityWidth > screenRight ||
             playerY < screenTop ||
             playerY + entityHeight > screenBottom) {
-            cerr << playerX << " " << playerY << endl;
+            //cerr << playerX << " " << playerY << endl;
             cerr << "is out of boundaries" <<endl;
             gameOver = true;
         }

@@ -13,7 +13,9 @@
 #include "vector2D.hpp"
 
 //TODO: figure out the real world_size
-#define WORLD_SIZE 80
+#define WORLD_WIDTH 16
+#define WORLD_HEIGHT 10
+#define WORLD_SIZE (WORLD_WIDTH * WORLD_HEIGHT)
 
 struct SearchCell {
 public:
@@ -23,8 +25,8 @@ public:
     float g; //actual distance from start
     float h; //heuristic: estimation to the goal
     
-    SearchCell() : parent(0) {}
-    SearchCell(int X, int Y, SearchCell* Parent = 0) : x(X), y(Y), parent(Parent), id(y * WORLD_SIZE + x), g(0), h(0) {}
+    SearchCell() : parent(NULL) {}
+    SearchCell(int X, int Y, SearchCell* Parent = NULL) : x(X), y(Y), parent(Parent), id(Y * WORLD_WIDTH + X), g(0), h(0) {}
     
     float getf() {
         return g+h;
@@ -32,8 +34,8 @@ public:
     
     //Manhattan Distance - approximation heuristics to calculate h
     float getDistance(SearchCell* nodeEnd) {
-        float x = abs(this->x - nodeEnd->x);
-        float y = abs(this->y - nodeEnd->y);
+        float x = (float) abs((float) (this->x - nodeEnd->x));
+        float y = (float) abs((float) (this->y - nodeEnd->y));
         return x + y;
     }
 };

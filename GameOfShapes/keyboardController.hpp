@@ -130,7 +130,7 @@ private:
         rect.x = mouseX;
         rect.y = mouseY;
         
-        cout << mouseX << " " << mouseY << endl;
+        //cout << mouseX << " " << mouseY << endl;
     }
 };
 
