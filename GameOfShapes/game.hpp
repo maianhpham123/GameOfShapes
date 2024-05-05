@@ -19,6 +19,7 @@
 #include "map.hpp"
 #include "bullet.hpp"
 #include "enemyAI.hpp"
+#include "menu.hpp"
 
 class Game {
 public:
@@ -42,6 +43,7 @@ private:
     Mouse mouse;
     Map map;
     Timer* timer;
+    Menu menu;
     
     AIEnemy* aienemy;
     Bullet* bullet;

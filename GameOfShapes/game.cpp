@@ -17,10 +17,11 @@
 #include "map.cpp"
 #include "bullet.cpp"
 #include "enemyAI.cpp"
+#include "menu.cpp"
 
 //TODO: create a vector for bullet, each time of mouse down is a new bullet being released
 //problem: the bullet has been initialised first
-Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer())
+Game::Game() : window(), player(window, "yellow_circle.png"), enemy(window, "Simple Shapes/Square.png"), isRunning(true), mouse(window.getRenderer()), map(window.getRenderer()), menu(window, keyboardController)
 {
     timer = Timer::Instance();
     map.update();
@@ -44,15 +45,32 @@ Game::~Game() {
 
 void Game::run() {
     
+    bool isMenu = true; //TODO: add menu
+    
     while (isRunning && !gameOver) {
-        timer->update();
-        if (timer->DeltaTime() >= (1.0f / FRAME_RATE)) {
-            handleEvents();
-            update();
-            checkCollision();
-            checkGameOver();
-            render();
-            timer->Reset();
+        
+        //TODO: fix Menu
+        if (isMenu) {
+            menu.run();
+            if (menu.isStartSelected()) {
+                isMenu = false;
+            }
+            
+            else if (menu.isExitSelected()) {
+                isRunning = false;
+            }
+        }
+        
+        else {
+            timer->update();
+            if (timer->DeltaTime() >= (1.0f / FRAME_RATE)) {
+                handleEvents();
+                update();
+                checkCollision();
+                checkGameOver();
+                render();
+                timer->Reset();
+            }
         }
     }
     

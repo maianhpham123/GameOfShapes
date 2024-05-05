@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0429CC682BE690BD007CBDD0 /* menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 048B10082BCAB440006108F1 /* menu.cpp */; };
+		043914112BE715B600FD5C20 /* Large Buttons in Resources */ = {isa = PBXBuildFile; fileRef = 043914102BE715B600FD5C20 /* Large Buttons */; };
 		04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04530DD12BBBCD3500CF006C /* Assets.xcassets */; };
 		04530DE52BBBCEAC00CF006C /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE42BBBCEAC00CF006C /* SDL2_image.framework */; };
 		04530DE72BBBCEAE00CF006C /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04530DE62BBBCEAE00CF006C /* SDL2_mixer.framework */; };
@@ -33,6 +33,9 @@
 		04323C2C2BDD9ABB003D900C /* searchCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = searchCell.h; sourceTree = "<group>"; };
 		0432AF8C2BD8146D00FC01AC /* enemyAI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = enemyAI.cpp; sourceTree = "<group>"; };
 		0432AF8D2BD8146D00FC01AC /* enemyAI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = enemyAI.hpp; sourceTree = "<group>"; };
+		043914102BE715B600FD5C20 /* Large Buttons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Large Buttons"; path = "../../../../../../../../Volumes/Data/game/Menu Buttons/Large Buttons/Large Buttons"; sourceTree = "<group>"; };
+		043914142BE721D500FD5C20 /* buttons.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = buttons.cpp; sourceTree = "<group>"; };
+		043914152BE721D500FD5C20 /* buttons.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = buttons.hpp; sourceTree = "<group>"; };
 		04530DCB2BBBCD3400CF006C /* GameOfShapes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfShapes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04530DD12BBBCD3500CF006C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04530DD62BBBCD3500CF006C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,11 +113,29 @@
 			name = algorithm;
 			sourceTree = "<group>";
 		};
+		043914132BE7215F00FD5C20 /* others */ = {
+			isa = PBXGroup;
+			children = (
+				048B10082BCAB440006108F1 /* menu.cpp */,
+				048B10092BCAB440006108F1 /* menu.hpp */,
+				048B100D2BCAEB5E006108F1 /* timer.cpp */,
+				048B100E2BCAEB5E006108F1 /* timer.hpp */,
+				04670F192BCBDC4A00E9FD67 /* map.cpp */,
+				04670F1A2BCBDC4A00E9FD67 /* map.hpp */,
+				04670F1D2BCBDC5900E9FD67 /* mouse.cpp */,
+				04670F1E2BCBDC5900E9FD67 /* mouse.hpp */,
+				043914142BE721D500FD5C20 /* buttons.cpp */,
+				043914152BE721D500FD5C20 /* buttons.hpp */,
+			);
+			name = others;
+			sourceTree = "<group>";
+		};
 		04530DC22BBBCD3400CF006C = {
 			isa = PBXGroup;
 			children = (
 				04530DCD2BBBCD3400CF006C /* GameOfShapes */,
 				04530DCC2BBBCD3400CF006C /* Products */,
+				043914102BE715B600FD5C20 /* Large Buttons */,
 				04AF019F2BDA5C6E005F6725 /* red_circle.png */,
 				04530DFC2BBBD6F800CF006C /* yellow_circle.png */,
 				04530E042BBBE78700CF006C /* Simple Shapes */,
@@ -160,18 +181,11 @@
 				04323C2B2BDD9A90003D900C /* algorithm */,
 				04A416352BC12E5400443BF1 /* vector */,
 				04A416362BC12E7200443BF1 /* entity */,
+				042044FB2BBD4A1700C205FB /* characters */,
+				043914132BE7215F00FD5C20 /* others */,
 				04530DEF2BBBCF2100CF006C /* main.cpp */,
 				042044F12BBD1A7C00C205FB /* game.cpp */,
 				042044F22BBD1A7C00C205FB /* game.hpp */,
-				042044FB2BBD4A1700C205FB /* characters */,
-				048B10082BCAB440006108F1 /* menu.cpp */,
-				048B10092BCAB440006108F1 /* menu.hpp */,
-				048B100D2BCAEB5E006108F1 /* timer.cpp */,
-				048B100E2BCAEB5E006108F1 /* timer.hpp */,
-				04670F192BCBDC4A00E9FD67 /* map.cpp */,
-				04670F1A2BCBDC4A00E9FD67 /* map.hpp */,
-				04670F1D2BCBDC5900E9FD67 /* mouse.cpp */,
-				04670F1E2BCBDC5900E9FD67 /* mouse.hpp */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -268,6 +282,7 @@
 				04530DD22BBBCD3500CF006C /* Assets.xcassets in Resources */,
 				04AF01A02BDA5C6E005F6725 /* red_circle.png in Resources */,
 				04530DFD2BBBD6F800CF006C /* yellow_circle.png in Resources */,
+				043914112BE715B600FD5C20 /* Large Buttons in Resources */,
 				04530E052BBBE78700CF006C /* Simple Shapes in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0429CC682BE690BD007CBDD0 /* menu.cpp in Sources */,
 				04530DF02BBBCF2100CF006C /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

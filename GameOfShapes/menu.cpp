@@ -6,38 +6,30 @@
 //
 
 #include "menu.hpp"
+#include "buttons.cpp"
 
 // menu.cpp
-//TODO: fix
+//TODO: need modifications, first steps done (that the program does work)
 
-#include "menu.hpp"
-
-Menu::Menu(RenderWindow& renderer, KeyboardController& keyboardController)
-    : renderer(renderer), keyboardController(keyboardController) {}
+Menu::Menu(RenderWindow& Window, KeyboardController& KeyboardController)
+    : window(Window), keyboardController(KeyboardController) {
+        startButtonEntity = NULL;
+        exitButtonEntity = NULL;
+        result = MenuResult::None;
+    }
 
 void Menu::run() {
     bool running = true;
     
-    // Load menu background texture
-    SDL_Texture* background = renderer.loadTexture("path_to_background_texture.png");
-    
     // Load start button texture
-    SDL_Texture* startButton = renderer.loadTexture("path_to_start_button_texture.png");
+    SDL_Texture* startButton = window.loadTexture("Large Buttons/New Game Button.png");
     
     // Load exit button texture
-    SDL_Texture* exitButton = renderer.loadTexture("path_to_exit_button_texture.png");
+    SDL_Texture* exitButton = window.loadTexture("Large Buttons/Quit Button.png");
     
     // Create entities for buttons
-    Entity startButtonEntity(startButton);
-    Entity exitButtonEntity(exitButton);
-    
-    // Position the buttons on the screen
-    // Adjust the coordinates according to your desired layout
-    startButtonEntity.transform.position.x = 100;
-    startButtonEntity.transform.position.y = 200;
-    
-    exitButtonEntity.transform.position.x = 100;
-    exitButtonEntity.transform.position.y = 300;
+    startButtonEntity = new Button(Vector2D(100.0f, 200.0f), window, "Large Buttons/New Game Button.png", "Start");
+    exitButtonEntity = new Button(Vector2D(100.0f, 300.0f), window, "Large Buttons/Quit Button.png", "Exit");
     
     while (running) {
         SDL_Event event;
@@ -47,25 +39,34 @@ void Menu::run() {
             }
             
             // Pass the event to the keyboard controller
-            keyboardController.handleEvents(event, startButtonEntity);
-            keyboardController.handleEvents(event, exitButtonEntity);
+            keyboardController.handleEvents(event, *startButtonEntity);
+            keyboardController.handleEvents(event, *exitButtonEntity);
         }
         
         // Render the menu
-        renderer.clear();
-        
-        // Render the background
-        renderer.render(background);
+        window.clear();
         
         // Render the buttons
-        renderer.render(startButtonEntity);
-        renderer.render(exitButtonEntity);
+        window.render(*startButtonEntity);
+        window.render(*exitButtonEntity);
         
-        renderer.display();
+        window.display();
     }
     
     // Clean up resources
-    SDL_DestroyTexture(background);
     SDL_DestroyTexture(startButton);
     SDL_DestroyTexture(exitButton);
+    
+    delete startButtonEntity;
+    delete exitButtonEntity;
+}
+
+bool Menu::isStartSelected() const
+{
+    return (result == MenuResult::Start);
+}
+
+bool Menu::isExitSelected() const
+{
+    return (result == MenuResult::Exit);
 }
